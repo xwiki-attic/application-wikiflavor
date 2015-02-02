@@ -30,7 +30,7 @@
   <groupId>org.xwiki.contrib</groupId>
   <artifactId>application-wikiflavor</artifactId>
   <name>Wiki Flavor - Parent POM</name>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <description>Wiki Flavor - Parent POM</description>
   <properties>
@@ -46,7 +46,7 @@
     <connection>scm:git:git://github.com/xwiki-contrib/application-wikiflavor.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/application-wikiflavor.git</developerConnection>
     <url>https://github.com/xwiki-contrib/application-wikiflavor</url>
-    <tag>application-wikiflavor-1.0</tag>
+    <tag>HEAD</tag>
   </scm>
   <distributionManagement>
     <repository>
