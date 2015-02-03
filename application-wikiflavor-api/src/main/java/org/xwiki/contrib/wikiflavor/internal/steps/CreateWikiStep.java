@@ -33,7 +33,7 @@ import org.xwiki.contrib.wikiflavor.WikiCreationStep;
 import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 
 /**
- * Step that create a wiki.
+ * Step that creates a wiki.
  *
  * @version $Id: $
  * @since 1.0

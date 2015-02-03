@@ -523,7 +523,7 @@
   #set($job = $services.wikiflavor.createWiki($wikiCreationRequest))
   #if (!$job)
 
-    {{error}}$services.localization.render('platform.wiki.create.error', [$request.wikiname, $services.wikiflavor.lastException]){{/error}}
+    {{error}}$services.localization.render('platform.wiki.create.error', [$request.wikiname, $services.wikiflavor.lastError]){{/error}}
     
   #else
     #creation()

@@ -23,6 +23,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import org.slf4j.Logger;
@@ -36,7 +37,14 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorManager;
 import org.xwiki.extension.ExtensionId;
 import org.xwiki.job.Job;
 import org.xwiki.job.event.status.JobStatus;
+import org.xwiki.model.reference.WikiReference;
 import org.xwiki.script.service.ScriptService;
+import org.xwiki.security.authorization.AccessDeniedException;
+import org.xwiki.security.authorization.AuthorizationManager;
+import org.xwiki.security.authorization.Right;
+import org.xwiki.wiki.descriptor.WikiDescriptorManager;
+
+import com.xpn.xwiki.XWikiContext;
 
 /**
  * Script services for the creation of flavored wikis.
@@ -62,6 +70,15 @@ public class WikiFlavorScriptServices implements ScriptService
 
     @Inject
     private Execution execution;
+
+    @Inject
+    private AuthorizationManager authorizationManager;
+
+    @Inject
+    private WikiDescriptorManager wikiDescriptorManager;
+    
+    @Inject
+    private Provider<XWikiContext> xcontextProvider;
     
     @Inject
     private Logger logger;
@@ -75,16 +92,25 @@ public class WikiFlavorScriptServices implements ScriptService
     public Job createWiki(WikiCreationRequest request)
     {
         try {
+            // Verify that the user has the CREATE_WIKI right
+            XWikiContext xcontext = xcontextProvider.get();
+            WikiReference mainWikiReference = new WikiReference(wikiDescriptorManager.getMainWikiId());
+            authorizationManager.checkAccess(Right.CREATE_WIKI, xcontext.getUserReference(), mainWikiReference);
+            
+            // Verify that if an extension id is provided, this extension is one of the authorized flavors.
             if (request.getExtensionId() != null) {
                 if (!isAuthorizedFlavor(request.getExtensionId())) {
-                    // The extension id is not an authorized flavor, we do not install it
-                    return null;
+                    throw new WikiFlavorException(String.format("The flavor [%s] is not authorized", 
+                            request.getExtensionId()));
                 }
             }
             return flavoredWikiCreator.createWiki(request);
+            
         } catch (WikiFlavorException e) {
             setLastError(e);
-            logger.error("Failed to create a new wiki.", e);
+            logger.warn("Failed to create a new wiki.", e);
+        } catch (AccessDeniedException e) {
+            setLastError(e);
         }
 
         return null;
@@ -136,9 +162,9 @@ public class WikiFlavorScriptServices implements ScriptService
      * @return an eventual exception or {@code null} if no exception was thrown
      * @since 1.1
      */
-    public WikiFlavorException getLastError()
+    public Exception getLastError()
     {
-        return (WikiFlavorException) this.execution.getContext().getProperty(ERROR_KEY);
+        return (Exception) this.execution.getContext().getProperty(ERROR_KEY);
     }
 
     /**
@@ -148,7 +174,7 @@ public class WikiFlavorScriptServices implements ScriptService
      * @see #getLastError()
      * @since 1.1
      */
-    private void setLastError(WikiFlavorException e)
+    private void setLastError(Exception e)
     {
         this.execution.getContext().setProperty(ERROR_KEY, e);
     }
