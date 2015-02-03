@@ -43,7 +43,7 @@ import org.xwiki.contrib.wikiflavor.internal.ExtensionInstaller;
  * Step that provision a new empty wiki with a template or an extension.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component
 @InstantiationStrategy(ComponentInstantiationStrategy.PER_LOOKUP)

@@ -39,7 +39,7 @@ import org.xwiki.job.internal.DefaultJobStatus;
  * Job that create a wiki and execute the WikiCreationSteps.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component
 @InstantiationStrategy(ComponentInstantiationStrategy.PER_LOOKUP)

@@ -25,7 +25,7 @@ import org.xwiki.stability.Unstable;
  * The source of provisioning for a wiki.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Unstable
 public enum WikiSource

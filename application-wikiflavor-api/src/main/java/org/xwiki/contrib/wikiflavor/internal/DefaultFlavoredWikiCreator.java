@@ -39,7 +39,7 @@ import org.xwiki.job.event.status.JobStatus;
  * Default implementation for {@link org.xwiki.contrib.wikiflavor.FlavoredWikiCreator}.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component
 @Singleton

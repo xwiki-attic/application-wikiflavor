@@ -26,7 +26,7 @@ import org.xwiki.stability.Unstable;
  * Step to be executed during the wiki creation job.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Role
 @Unstable

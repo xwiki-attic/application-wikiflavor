@@ -32,7 +32,7 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorException;
  * Steps that add members to the wiki.
  * 
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 public class AddUsersStep implements WikiCreationStep
 {

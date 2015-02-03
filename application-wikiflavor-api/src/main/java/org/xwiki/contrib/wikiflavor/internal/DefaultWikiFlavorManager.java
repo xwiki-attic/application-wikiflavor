@@ -51,7 +51,7 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorManager;
  * Default implementation for {@link org.xwiki.contrib.wikiflavor.WikiFlavorManager}.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component
 @Singleton

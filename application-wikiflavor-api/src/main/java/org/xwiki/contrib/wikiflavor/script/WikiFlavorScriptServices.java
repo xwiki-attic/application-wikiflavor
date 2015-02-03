@@ -42,7 +42,7 @@ import org.xwiki.script.service.ScriptService;
  * Script services for the creation of flavored wikis.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component
 @Singleton

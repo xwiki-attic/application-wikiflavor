@@ -25,7 +25,7 @@ import org.xwiki.stability.Unstable;
  * Exception concerning the Wiki Flavor module.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Unstable
 public class WikiFlavorException extends Exception

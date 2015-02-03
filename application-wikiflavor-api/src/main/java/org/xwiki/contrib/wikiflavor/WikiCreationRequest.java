@@ -31,7 +31,7 @@ import org.xwiki.wiki.user.UserScope;
  * A wiki creation request containing all information about a wiki to create.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Unstable
 public class WikiCreationRequest extends AbstractRequest

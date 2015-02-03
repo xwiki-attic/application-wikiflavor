@@ -36,7 +36,7 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorException;
  * Step that create a wiki.
  *
  * @version $Id: $
- * @since 2015-M1-1
+ * @since 1.0
  */
 @Component
 @InstantiationStrategy(ComponentInstantiationStrategy.PER_LOOKUP)

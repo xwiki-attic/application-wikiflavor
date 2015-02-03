@@ -37,7 +37,7 @@ import org.xwiki.model.reference.DocumentReference;
  * Component that installs an extension on a wiki.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component(roles = ExtensionInstaller.class)
 public class ExtensionInstaller

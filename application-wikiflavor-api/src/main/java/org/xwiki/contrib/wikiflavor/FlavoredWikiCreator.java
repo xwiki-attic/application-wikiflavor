@@ -28,7 +28,7 @@ import org.xwiki.stability.Unstable;
  * Component to create a wiki and install a flavor in it.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Role
 @Unstable

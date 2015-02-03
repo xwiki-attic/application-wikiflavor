@@ -50,7 +50,7 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorException;
  * scope, membership type, etc...).
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Component
 @InstantiationStrategy(ComponentInstantiationStrategy.PER_LOOKUP)

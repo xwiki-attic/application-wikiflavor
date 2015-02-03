@@ -25,7 +25,7 @@ import org.xwiki.stability.Unstable;
  * A flavor is an extension so will be used as the main extension of a subwiki.
  *
  * @version $Id: $
- * @since 2015-1-M1
+ * @since 1.0
  */
 @Unstable
 public class Flavor
