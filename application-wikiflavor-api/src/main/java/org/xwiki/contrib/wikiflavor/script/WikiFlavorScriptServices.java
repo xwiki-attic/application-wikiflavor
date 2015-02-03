@@ -25,17 +25,18 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import org.slf4j.Logger;
 import org.xwiki.component.annotation.Component;
+import org.xwiki.context.Execution;
+import org.xwiki.contrib.wikiflavor.Flavor;
+import org.xwiki.contrib.wikiflavor.FlavoredWikiCreator;
+import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
+import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 import org.xwiki.contrib.wikiflavor.WikiFlavorManager;
 import org.xwiki.extension.ExtensionId;
 import org.xwiki.job.Job;
 import org.xwiki.job.event.status.JobStatus;
 import org.xwiki.script.service.ScriptService;
-
-import org.xwiki.contrib.wikiflavor.Flavor;
-import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
-import org.xwiki.contrib.wikiflavor.FlavoredWikiCreator;
-import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 
 /**
  * Script services for the creation of flavored wikis.
@@ -48,11 +49,22 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 @Named("wikiflavor")
 public class WikiFlavorScriptServices implements ScriptService
 {
+    /**
+     * The key under which the last encountered error is stored in the current execution context.
+     */
+    private static final String ERROR_KEY = "scriptservice.wikiflavor.error";
+            
     @Inject
     private FlavoredWikiCreator flavoredWikiCreator;
 
     @Inject
     private WikiFlavorManager wikiFlavorManager;
+
+    @Inject
+    private Execution execution;
+    
+    @Inject
+    private Logger logger;
 
     /**
      * Asynchronously create a wiki with a flavor.
@@ -71,7 +83,8 @@ public class WikiFlavorScriptServices implements ScriptService
             }
             return flavoredWikiCreator.createWiki(request);
         } catch (WikiFlavorException e) {
-            // Todo
+            setLastError(e);
+            logger.error("Failed to create a new wiki.", e);
         }
 
         return null;
@@ -102,7 +115,7 @@ public class WikiFlavorScriptServices implements ScriptService
         try {
             return wikiFlavorManager.getFlavors();
         } catch (WikiFlavorException e) {
-            // Todo
+            setLastError(e);
         }
 
         return null;
@@ -116,5 +129,27 @@ public class WikiFlavorScriptServices implements ScriptService
             }
         }
         return false;
+    }
+
+    /**
+     * Get the error generated while performing the previously called action.
+     * @return an eventual exception or {@code null} if no exception was thrown
+     * @since 1.1
+     */
+    public WikiFlavorException getLastError()
+    {
+        return (WikiFlavorException) this.execution.getContext().getProperty(ERROR_KEY);
+    }
+
+    /**
+     * Store a caught exception in the context, so that it can be later retrieved using {@link #getLastError()}.
+     *
+     * @param e the exception to store, can be {@code null} to clear the previously stored exception
+     * @see #getLastError()
+     * @since 1.1
+     */
+    private void setLastError(WikiFlavorException e)
+    {
+        this.execution.getContext().setProperty(ERROR_KEY, e);
     }
 }

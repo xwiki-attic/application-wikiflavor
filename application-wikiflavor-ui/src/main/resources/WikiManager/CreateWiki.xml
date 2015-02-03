@@ -447,7 +447,7 @@
     {{/warning}}
     
     #stepMembers()
-  #elseif($services.wiki.exists($request.wikiname))
+  #elseif("$!services.wikiflavor.getJobStatus($request.wikiname)" != '')
     #creation()
   #else
     #createWiki()
