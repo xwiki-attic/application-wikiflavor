@@ -58,25 +58,30 @@ public class HackedDistributionScriptService extends DistributionScriptService
     @Override
     public ExtensionId getUIExtensionId()
     {
+        return getUIExtensionId(wikiDescriptorManager.getCurrentWikiId());
+    }
+
+    @Override
+    public ExtensionId getUIExtensionId(String wiki)
+    {
         XWikiContext xcontext = this.xcontextProvider.get();
 
         // If it is the main wiki, return the main UI.
-        if (xcontext.isMainWiki()) {
+        if (xcontext.isMainWiki(wiki)) {
             return this.distributionManager.getMainUIExtensionId();
         }
-
-        String currentWiki = wikiDescriptorManager.getCurrentWikiId();
+        
         String extensionId = (String) documentAccessBridge.getProperty(
-                new DocumentReference(currentWiki, WIKI_FLAVOR_CODE_SPACE, "MainExtensionId"),
-                new DocumentReference(currentWiki, WIKI_FLAVOR_CODE_SPACE, "MainExtensionIdClass"),
+                new DocumentReference(wiki, WIKI_FLAVOR_CODE_SPACE, "MainExtensionId"),
+                new DocumentReference(wiki, WIKI_FLAVOR_CODE_SPACE, "MainExtensionIdClass"),
                 "extensionId");
         if (StringUtils.isNotEmpty(extensionId)) {
             // Todo: Here we suppose we use the same version than the wiki.
-            // Todo: But it could be something else for non XCS flavors...
+            // Todo: But it could be something else actually...
             return new ExtensionId(extensionId, xcontext.getWiki().getVersion());
         } else {
             // Otherwise, it is the normal extension id
-            return super.getUIExtensionId();
+            return super.getUIExtensionId(wiki);
         }
     }
 }
