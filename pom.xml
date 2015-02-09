@@ -60,4 +60,12 @@
     <module>application-wikiflavor-api</module>
     <module>application-wikiflavor-ui</module>
   </modules>
+  <profiles>
+    <profile>
+      <id>integration-tests</id>
+      <modules>
+        <module>application-wikiflavor-test</module>
+      </modules>
+    </profile>
+  </profiles>
 </project>
