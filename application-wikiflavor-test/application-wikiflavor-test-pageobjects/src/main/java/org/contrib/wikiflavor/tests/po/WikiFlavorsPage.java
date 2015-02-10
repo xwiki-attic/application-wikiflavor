@@ -55,7 +55,7 @@ public class WikiFlavorsPage extends ViewPage
     public WikiFlavorEntryEditPage addNewEntry(String entryName)
     {
         addNewEntry.click();
-        entryNameInput.sendKeys("Basic Wiki");
+        entryNameInput.sendKeys(entryName);
         entryNameButton.click();
         return new WikiFlavorEntryEditPage();
     }

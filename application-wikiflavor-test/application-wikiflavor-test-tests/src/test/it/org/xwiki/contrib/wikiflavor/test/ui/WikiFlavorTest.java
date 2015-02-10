@@ -24,6 +24,7 @@ import java.util.List;
 import org.contrib.wikiflavor.tests.po.CreateFlavoredWikiPage;
 import org.contrib.wikiflavor.tests.po.Flavor;
 import org.contrib.wikiflavor.tests.po.Template;
+import org.contrib.wikiflavor.tests.po.WikiCreationProvisioningPage;
 import org.contrib.wikiflavor.tests.po.WikiFlavorEntryEditPage;
 import org.contrib.wikiflavor.tests.po.WikiFlavorsPage;
 import org.junit.Rule;
@@ -31,12 +32,12 @@ import org.junit.Test;
 import org.xwiki.test.ui.AbstractTest;
 import org.xwiki.test.ui.SuperAdminAuthenticationRule;
 import org.xwiki.test.ui.po.editor.WikiEditPage;
-import org.xwiki.wiki.test.po.CreateWikiPageStepProvisioning;
 import org.xwiki.wiki.test.po.CreateWikiPageStepUser;
 import org.xwiki.wiki.test.po.WikiHomePage;
 import org.xwiki.wiki.test.po.WikiIndexPage;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * @version $Id: $
@@ -101,16 +102,20 @@ public class WikiFlavorTest extends AbstractTest
         
         // Step 2
         CreateWikiPageStepUser createWikiPageStepUser = createFlavoredWikiPage.goUserStep();
-        CreateWikiPageStepProvisioning createWikiPageStepProvisioning = createWikiPageStepUser.createWithTemplate();
-        
+        createWikiPageStepUser.createWithTemplate();
+        WikiCreationProvisioningPage wikiCreationProvisioningPage = new WikiCreationProvisioningPage();
+
         // Provisioning
-        assertEquals("Wiki creation", createWikiPageStepProvisioning.getStepTitle());
-        
+        assertEquals("Wiki creation", wikiCreationProvisioningPage.getStepTitle());
+        wikiCreationProvisioningPage.waitForFinalizeButton(30);
+        assertFalse(wikiCreationProvisioningPage.hasLogError());
+
         // Finalization
-        WikiHomePage wikiHomePage = createWikiPageStepProvisioning.finalizeCreation();
+        WikiHomePage wikiHomePage = wikiCreationProvisioningPage.finalizeCreation();
         
         // Go to the created subwiki
         // Look if the flavor have been correctly installed
+        // ToDo: being able to navigate through a subwiki
         // ThemeApplicationWebHomePage themeApplicationWebHomePage = ThemeApplicationWebHomePage.gotoPage();
         // assertTrue(themeApplicationWebHomePage.exists());
         
@@ -145,13 +150,16 @@ public class WikiFlavorTest extends AbstractTest
 
         // Step 2
         createWikiPageStepUser = createFlavoredWikiPage.goUserStep();
-        createWikiPageStepProvisioning = createWikiPageStepUser.createWithTemplate();
+        createWikiPageStepUser.createWithTemplate();
+        wikiCreationProvisioningPage = new WikiCreationProvisioningPage();
 
         // Provisioning
-        assertEquals("Wiki creation", createWikiPageStepProvisioning.getStepTitle());
+        assertEquals("Wiki creation", wikiCreationProvisioningPage.getStepTitle());
 
         // Finalization
-        wikiHomePage = createWikiPageStepProvisioning.finalizeCreation();
+        wikiCreationProvisioningPage.waitForFinalizeButton(30);
+        assertFalse(wikiCreationProvisioningPage.hasLogError());
+        wikiHomePage = wikiCreationProvisioningPage.finalizeCreation();
         
         // Go to the subwiki and check that it has correctly be created with the template
         assertEquals("My Template", wikiHomePage.getContent());

@@ -19,6 +19,8 @@
  */
 package org.contrib.wikiflavor.tests.po;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 /**
  * @version $Id: $
  */
@@ -83,5 +85,18 @@ public class Flavor
     public void setName(String name)
     {
         this.name = name;
+    }
+    
+    public boolean equals(Object o) {
+        if (o instanceof Flavor) {
+            Flavor flavor = (Flavor) o;
+            return new EqualsBuilder()
+                    .append(name, flavor.name)
+                    .append(extensionId, flavor.extensionId)
+                    .append(extensionVersion, flavor.extensionVersion)
+                    .append(description, flavor.description)
+                    .isEquals();
+        }
+        return false;
     }
 }
