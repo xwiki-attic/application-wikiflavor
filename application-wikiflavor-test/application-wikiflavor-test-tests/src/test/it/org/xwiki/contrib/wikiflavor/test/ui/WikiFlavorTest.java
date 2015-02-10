@@ -46,18 +46,31 @@ public class WikiFlavorTest extends AbstractTest
     @Rule
     public SuperAdminAuthenticationRule superAdminAuthenticationRule =
             new SuperAdminAuthenticationRule(getUtil(), getDriver());
+    
+    private static final String FLAVOR_NAME = "Wiki with Flamingo Theme";
+    
+    private static final String FLAVOR_EXTENSION_ID = "org.xwiki.platform:xwiki-platform-flamingo-theme";
+    
+    private static final String FLAVOR_DESCRIPTION = "A wiki holding flamingo themes only. Quick to install.";
+    
+    private void setUpFlavor() throws Exception
+    {
+        // First, we need to fill a flavor
+        WikiFlavorsPage wikiFlavorsPage = WikiFlavorsPage.gotoPage();
+        WikiFlavorEntryEditPage wikiFlavorEntryEditPage = wikiFlavorsPage.addNewEntry(FLAVOR_NAME);
+        wikiFlavorEntryEditPage.setName(FLAVOR_NAME);
+        // we install the Flamingo Theme application because it is quick to install and it is easy to verify that it has
+        // been correctly installed since this application provides some page objects.
+        wikiFlavorEntryEditPage.setExtensionId(FLAVOR_EXTENSION_ID);
+        wikiFlavorEntryEditPage.setDescription(FLAVOR_DESCRIPTION);
+        wikiFlavorEntryEditPage.setIcon("wiki");
+        wikiFlavorEntryEditPage.clickSaveAndView();
+    }
 
     @Test
     public void createWikis() throws Exception
     {
-        // First, we need to fill a flavor
-        WikiFlavorsPage wikiFlavorsPage = WikiFlavorsPage.gotoPage();
-        WikiFlavorEntryEditPage wikiFlavorEntryEditPage = wikiFlavorsPage.addNewEntry("Basic Wiki");
-        wikiFlavorEntryEditPage.setName("Basic Wiki");
-        wikiFlavorEntryEditPage.setExtensionId("org.xwiki.enterprise:xwiki-enterprise-ui-wiki");
-        wikiFlavorEntryEditPage.setDescription("A basic wiki from XE");
-        wikiFlavorEntryEditPage.setIcon("wiki");
-        wikiFlavorEntryEditPage.clickSaveAndView();
+        setUpFlavor();
         
         // Now we can create a subwiki        
         WikiIndexPage wikiIndexPage = WikiIndexPage.gotoPage();
@@ -72,9 +85,9 @@ public class WikiFlavorTest extends AbstractTest
         
         // Verify that the flavor is the one we just have created
         Flavor basicWikiFlavor = flavors.get(0);
-        assertEquals("Basic Wiki", basicWikiFlavor.getName());
-        assertEquals("A basic wiki from XE", basicWikiFlavor.getDescription());
-        assertEquals("org.xwiki.enterprise:xwiki-enterprise-ui-wiki", basicWikiFlavor.getExtensionId());
+        assertEquals(FLAVOR_NAME, basicWikiFlavor.getName());
+        assertEquals(FLAVOR_DESCRIPTION, basicWikiFlavor.getDescription());
+        assertEquals(FLAVOR_EXTENSION_ID, basicWikiFlavor.getExtensionId());
         assertEquals(null, basicWikiFlavor.getExtensionVersion());
         
         // Get the list of templates
@@ -82,7 +95,7 @@ public class WikiFlavorTest extends AbstractTest
         assertEquals(0, templates.size());
         
         // Set the type of wiki we want
-        createFlavoredWikiPage.setFlavorOrExtension("Basic Wiki");
+        createFlavoredWikiPage.setFlavorOrExtension(FLAVOR_NAME);
         // This wiki will be a template
         createFlavoredWikiPage.setIsTemplate(true);
         
@@ -96,10 +109,16 @@ public class WikiFlavorTest extends AbstractTest
         // Finalization
         WikiHomePage wikiHomePage = createWikiPageStepProvisioning.finalizeCreation();
         
-        // Go to the create subwiki and change the title
-        WikiEditPage wikiEditHomePage = wikiHomePage.editWiki();
-        wikiEditHomePage.setTitle("My Template");
-        wikiEditHomePage.clickSaveAndView();
+        // Go to the created subwiki
+        // Look if the flavor have been correctly installed
+        // ThemeApplicationWebHomePage themeApplicationWebHomePage = ThemeApplicationWebHomePage.gotoPage();
+        // assertTrue(themeApplicationWebHomePage.exists());
+        
+        // Create a home page
+        wikiHomePage.createPage();
+        WikiEditPage editPage = new WikiEditPage();
+        editPage.setContent("My Template");
+        editPage.clickSaveAndView();
         
         // Let's go to create a new subwiki
         wikiIndexPage = WikiIndexPage.gotoPage();
@@ -129,20 +148,20 @@ public class WikiFlavorTest extends AbstractTest
         createWikiPageStepProvisioning = createWikiPageStepUser.createWithTemplate();
 
         // Provisioning
-        assertEquals("The system is provisioning the wiki.", createWikiPageStepProvisioning.getStepTitle());
+        assertEquals("Wiki creation", createWikiPageStepProvisioning.getStepTitle());
 
         // Finalization
         wikiHomePage = createWikiPageStepProvisioning.finalizeCreation();
         
         // Go to the subwiki and check that it has correctly be created with the template
-        assertEquals("My Template", wikiHomePage.getDocumentTitle());
+        assertEquals("My Template", wikiHomePage.getContent());
         
         // Cleaning
         wikiHomePage.deleteWiki();
         wikiIndexPage = WikiIndexPage.gotoPage();
         wikiHomePage = wikiIndexPage.getWikiLink("My subwiki").click();
         wikiHomePage.deleteWiki();
-        wikiFlavorsPage = WikiFlavorsPage.gotoPage();
+        WikiFlavorsPage.gotoPage().getFlavorPage(FLAVOR_NAME).delete().clickYes();
     }
     
 }

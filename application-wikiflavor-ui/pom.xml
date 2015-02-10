@@ -47,7 +47,6 @@
       <artifactId>xwiki-platform-wiki-ui-mainwiki</artifactId>
       <version>${platform.version}</version>
       <type>xar</type>
-      <scope>provided</scope>
     </dependency>
     <!-- We use the icon picker -->
     <dependency>
@@ -79,26 +78,6 @@
         <groupId>org.xwiki.commons</groupId>
         <artifactId>xwiki-commons-tool-xar-plugin</artifactId>
         <version>${commons.version}</version>
-      </plugin>
-      <!-- We need the pages contained by xwiki-platform-wiki-ui-mainwiki, but we do not want to depend on it, we
-       overwrite one of these pages and we do not control in which order the pages are installed. -->
-      <plugin>
-        <groupId>org.xwiki.commons</groupId>
-        <artifactId>xwiki-commons-tool-xar-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>unxar-xwiki-platorm-wiki-ui-mainwiki</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>unxar</goal>
-            </goals>
-            <configuration>
-              <groupId>org.xwiki.platform</groupId>
-              <artifactId>xwiki-platform-wiki-ui-mainwiki</artifactId>
-              <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

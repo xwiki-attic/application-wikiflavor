@@ -19,6 +19,9 @@
  */
 package org.contrib.wikiflavor.tests.po;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.xwiki.test.ui.po.ViewPage;
@@ -36,6 +39,9 @@ public class WikiFlavorsPage extends ViewPage
 
     @FindBy(xpath = "//div[@id='entryNamePopup']/input[@type='image']")
     private WebElement entryNameButton;
+
+    @FindBy(xpath = "//table[@id='wikiflavors']//td[contains(@class, 'doc_name')]/a\n")
+    private List<WebElement> flavors;
     
     /**
      * Opens the home page.
@@ -53,4 +59,26 @@ public class WikiFlavorsPage extends ViewPage
         entryNameButton.click();
         return new WikiFlavorEntryEditPage();
     }
+    
+    public List<String> getFlavors()
+    {
+        List<String> results = new ArrayList<>();
+        for (WebElement flavor : flavors) {
+            results.add(flavor.getText());
+        }
+        return results;
+    }
+    
+    public ViewPage getFlavorPage(String flavorName)
+    {
+        for (WebElement flavor : flavors) {
+            if (flavorName.equals(flavor.getText())) {
+                flavor.click();
+                return new ViewPage();
+            }
+        }
+        
+        return null;
+    }
+    
 }

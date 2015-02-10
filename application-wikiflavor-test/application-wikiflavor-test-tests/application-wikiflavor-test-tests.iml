@@ -25,31 +25,12 @@
     <orderEntry type="module" module-name="application-wikiflavor-api" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-component-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-text:6.4" level="project" />
-    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-stability:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-extension-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-properties:6.4" level="project" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-logging-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-environment-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-job:6.4" level="project" />
-    <orderEntry type="library" name="Maven: com.thoughtworks.xstream:xstream:1.4.7" level="project" />
-    <orderEntry type="library" name="Maven: xmlpull:xmlpull:1.1.3.1" level="project" />
-    <orderEntry type="library" name="Maven: xpp3:xpp3_min:1.1.4c" level="project" />
-    <orderEntry type="library" name="Maven: javax.batch:javax.batch-api:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.9" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.2-GA" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.0.17" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-observation-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-script:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-wiki-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-model:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-wiki-default:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-cache-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-bridge:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-localization-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-wiki-template-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-wiki-user-api:6.4" level="project" />
@@ -70,7 +51,6 @@
     <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.3" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
     <orderEntry type="library" name="Maven: commons-fileupload:commons-fileupload:1.3.1" level="project" />
-    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tika:tika-core:1.6" level="project" />
     <orderEntry type="library" name="Maven: xerces:xercesImpl:2.11.0" level="project" />
@@ -132,13 +112,23 @@
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-velocity-webapp:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-environment-servlet:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-environment-common:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.velocity:velocity-tools:2.0" level="project" />
+    <orderEntry type="library" name="Maven: sslext:sslext:1.2-0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.struts:struts-taglib:1.3.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.struts:struts-tiles:1.3.8" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-xmlrpc-model:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.xmlrpc:xmlrpc-client:3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.rendering:xwiki-rendering-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-filter-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-xwiki:6.4" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.cssparser:cssparser:0.9.14" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-chart-renderer:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.jfree:jfreechart:1.0.19" level="project" />
     <orderEntry type="library" name="Maven: org.jfree:jcommon:1.0.23" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-url-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-resource-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-display-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-sheet-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-container-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-captcha:6.4" level="project" />
@@ -146,6 +136,16 @@
     <orderEntry type="library" name="Maven: com.octo.captcha:jcaptcha:2.0-alpha-1-SNAPSHOT-500" level="project" />
     <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235" level="project" />
     <orderEntry type="library" name="Maven: com.octo.captcha:jcaptcha-extension-sound-freetts:2.0-alpha-1-SNAPSHOT-500" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-script:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.commons:xwiki-commons-classloader-protocol-jar:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-classloader-protocol-attachmentjar:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-signature:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-common:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-pkix:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-signer:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-crypto-store-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-store-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-context:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.rendering:xwiki-rendering-transformation-icon:6.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-transformation-wikiword:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-formula-renderer:6.4" level="project" />
@@ -159,6 +159,11 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jboss.marshalling:jboss-marshalling-river:1.3.15.GA" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jboss.marshalling:jboss-marshalling:1.3.15.GA" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.jboss:staxmapper:1.1.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-xml:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.jdom:jdom:1.1.3" level="project" />
+    <orderEntry type="library" name="Maven: net.sourceforge.htmlcleaner:htmlcleaner:2.10" level="project" />
+    <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.5" level="project" />
+    <orderEntry type="library" name="Maven: net.java.dev.stax-utils:stax-utils:20070216" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-office-importer:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-refactoring:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.artofsolving.jodconverter:jodconverter-core:3.0-beta-4-xwiki-20110822" level="project" />
@@ -222,6 +227,30 @@
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-extension-handler-xar:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-filter-instance-oldcore:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-filter-event-user:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-user-default:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-template-default:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-application-manager-api:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-script:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-url-standard:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-user-script:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-template-script:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-velocity:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-velocity:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-management:6.4" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.rendering:xwiki-rendering-transformation-macro:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-include:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-rendering-transformation-macro:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-macro-box:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-macro-html:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-syntax-xhtml:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-xml:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-syntax-wikimodel:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-wikimodel:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-syntax-xdomxmlcurrent:6.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-macro-message:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-icon-script:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-icon-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-icon-default:6.4" level="project" />
@@ -240,72 +269,65 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-groovy:6.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.commons:xwiki-commons-groovy:6.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.ivy:ivy:2.3.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-user-default:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-template-default:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-application-manager-api:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-script:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-url-standard:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-user-script:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-wiki-template-script:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-velocity:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-script:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-extension-repository-maven:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-properties:6.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
+    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-environment-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-extension-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-configuration-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-context:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-logging-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-job:6.4" level="project" />
+    <orderEntry type="library" name="Maven: com.thoughtworks.xstream:xstream:1.4.7" level="project" />
+    <orderEntry type="library" name="Maven: xmlpull:xmlpull:1.1.3.1" level="project" />
+    <orderEntry type="library" name="Maven: xpp3:xpp3_min:1.1.4c" level="project" />
+    <orderEntry type="library" name="Maven: javax.batch:javax.batch-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.9" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.2-GA" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-api:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-util:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-impl:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-spi:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-connector-basic:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-transport-http:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.3.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-transport-file:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.aether:aether-transport-wagon:0.9.1.v20140329" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.wagon:wagon-provider-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-aether-provider:3.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-model-builder:3.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-interpolation:1.19" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-repository-metadata:3.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-component-annotations:1.5.5" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:3.0.17" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.sisu:org.eclipse.sisu.plexus:0.2.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.enterprise:cdi-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.annotation:jsr250-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.sisu:org.eclipse.sisu.inject:0.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-classworlds:2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.sisu:sisu-guice:no_aop:3.2.4" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-extension-handler-jar:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-classloader-api:6.4" level="project" />
     <orderEntry type="library" name="Maven: edu.emory.mathcs.util:emory-util-classloader:2.1" level="project" />
     <orderEntry type="library" name="Maven: edu.emory.mathcs.util:emory-util-io:2.1" level="project" />
     <orderEntry type="library" name="Maven: edu.emory.mathcs.util:emory-util-security:2.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.commons:xwiki-commons-classloader-protocol-jar:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-classloader-protocol-attachmentjar:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-component-default:6.4" level="project" />
     <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-component-observation:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-signature:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-common:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-pkix:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-signer:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-crypto-store-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-crypto-store-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-velocity:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-management:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.velocity:velocity-tools:2.0" level="project" />
-    <orderEntry type="library" name="Maven: sslext:sslext:1.2-0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.struts:struts-taglib:1.3.8" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.struts:struts-tiles:1.3.8" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.3.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.3.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-xwiki:6.4" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.cssparser:cssparser:0.9.14" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.rendering:xwiki-rendering-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-filter-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.rendering:xwiki-rendering-transformation-macro:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-include:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-context:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-bridge:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-model:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-display-api:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.platform:xwiki-platform-rendering-macro-context:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.platform:xwiki-platform-rendering-transformation-macro:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-macro-box:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-macro-html:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-xml:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.jdom:jdom:1.1.3" level="project" />
-    <orderEntry type="library" name="Maven: net.sourceforge.htmlcleaner:htmlcleaner:2.10" level="project" />
-    <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.5" level="project" />
-    <orderEntry type="library" name="Maven: net.java.dev.stax-utils:stax-utils:20070216" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-syntax-xhtml:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-xml:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-syntax-wikimodel:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-wikimodel:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-syntax-xdomxmlcurrent:6.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.xwiki.rendering:xwiki-rendering-macro-message:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-extension-repository-xwiki:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-extension-repository-http:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.3.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-repository-api:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-script:6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-observation-api:6.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.platform:xwiki-platform-test:6.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.commons:xwiki-commons-test-component:6.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.commons:xwiki-commons-test-simple:6.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:1.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock:2.6.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-junit4:2.6.0" level="project" />
@@ -314,8 +336,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: jmock:jmock:1.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: jmock:jmock-cglib:1.2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: cglib:cglib-nodep:2.1_3" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-component-default:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-configuration-api:6.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: cpsuite:cpsuite:1.2.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.commons:commons-exec:1.1" level="project" />
     <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.10" level="project" />
@@ -349,20 +369,15 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api-maven:2.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-spi-maven:2.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven:2.0.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-api:1.13.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-impl:1.13.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-spi:1.13.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-util:1.13.1" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.aether:aether-api:1.13.1" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.aether:aether-impl:1.13.1" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.aether:aether-spi:1.13.1" level="project" />
+    <orderEntry type="library" name="Maven: org.sonatype.aether:aether-util:1.13.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-connector-wagon:1.13.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-aether-provider:3.0.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-model-builder:3.0.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-repository-metadata:3.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-settings:3.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-settings-builder:3.0.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-interpolation:1.14" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.plexus:plexus-sec-dispatcher:1.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.plexus:plexus-cipher:1.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-provider-api:2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-file:2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-http-lightweight:2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-http-shared4:2.4" level="project" />
@@ -376,14 +391,14 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-compiler-javac:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-compiler-api:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-component-api:1.0-alpha-33" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-classworlds:1.2-alpha-10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.google.code.tempus-fugit:tempus-fugit:1.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: javax.ws.rs:jsr311-api:1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.platform:xwiki-platform-rest-model:6.4" level="project" />
-    <orderEntry type="library" name="Maven: org.xwiki.commons:xwiki-commons-repository-model:6.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.commons:xwiki-commons-repository-model:6.4" level="project" />
     <orderEntry type="module" module-name="application-wikiflavor-test-pageobjects" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.platform:xwiki-platform-wiki-test-pageobjects:6.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.xwiki.platform:xwiki-platform-flamingo-test-pageobjects:7.0-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: ch.qos.logback:logback-classic:1.1.2" level="project" />

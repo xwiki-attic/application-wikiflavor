@@ -75,11 +75,8 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
     public void setFlavorOrExtension(String name)
     {
         for (WebElement el : types) {
-            WebElement input = el.findElement(By.tagName("input")); 
-            String value = input.getAttribute("value");
             WebElement label = el.findElement(By.tagName("label"));
-            String elName = label.getText();
-            if (StringUtils.startsWith(value, "extension:") && name.equals(elName)) {
+            if (name.equals(label.getText())) {
                 label.click();
                 return;
             }
