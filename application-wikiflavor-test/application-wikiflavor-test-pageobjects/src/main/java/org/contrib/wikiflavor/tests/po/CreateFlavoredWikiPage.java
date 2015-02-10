@@ -35,6 +35,10 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
 {
     @FindBy(className = "xwiki-custom-select-option")
     private List<WebElement> types;
+
+    // Bug: descriptionField does not always work (maybe because there is a meta tag called "description".
+    @FindBy(id = "description")
+    private WebElement currentDescriptionField;
     
     public List<Flavor> getFlavors()
     {
@@ -83,5 +87,12 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
                 return;
             }
         }
+    }
+
+    @Override
+    public void setDescription(String description)
+    {
+        currentDescriptionField.clear();
+        currentDescriptionField.sendKeys(description);
     }
 }
