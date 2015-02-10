@@ -165,10 +165,10 @@ public class WikiFlavorTest extends AbstractTest
         assertEquals("My Template", wikiHomePage.getContent());
         
         // Cleaning
-        wikiHomePage.deleteWiki();
+        wikiHomePage.deleteWiki().confirm();
         wikiIndexPage = WikiIndexPage.gotoPage();
         wikiHomePage = wikiIndexPage.getWikiLink("My subwiki").click();
-        wikiHomePage.deleteWiki();
+        wikiHomePage.deleteWiki().confirm();
         WikiFlavorsPage.gotoPage().getFlavorPage(FLAVOR_NAME).delete().clickYes();
     }
     
