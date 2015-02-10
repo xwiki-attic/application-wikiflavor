@@ -64,7 +64,9 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
             if (StringUtils.startsWith(value, "template:")) {
                 Template template = new Template();
                 template.setName(el.findElement(By.tagName("label")).getText());
-                template.setDescription(el.findElement(By.className("xHint")).getText());
+                if (getUtil().findElementWithoutWaiting(getDriver(), By.className("xHint")) != null) {
+                    template.setDescription(el.findElement(By.className("xHint")).getText());
+                }
                 template.setTemplateId(value.substring("template:".length()));
                 results.add(template);
             }
