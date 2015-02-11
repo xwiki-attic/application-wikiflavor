@@ -105,6 +105,7 @@
       <plugin>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-tool-packager-plugin</artifactId>
+        <!-- We use the version 6.4.1 because we need http://jira.xwiki.org/browse/XWIKI-11777 -->
         <version>6.4.1</version>
         <executions>
           <execution>
@@ -146,6 +147,7 @@
           <plugin>
             <groupId>org.xwiki.platform</groupId>
             <artifactId>xwiki-platform-tool-packager-plugin</artifactId>
+            <!-- We use the version 6.4.1 because we need http://jira.xwiki.org/browse/XWIKI-11777 -->
             <version>6.4.1</version>
             <dependencies>
               <dependency>
