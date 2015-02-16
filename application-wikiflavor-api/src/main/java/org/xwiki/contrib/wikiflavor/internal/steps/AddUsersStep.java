@@ -49,7 +49,7 @@ public class AddUsersStep implements WikiCreationStep
             }
         } catch (WikiUserManagerException e) {
             throw new WikiFlavorException(
-                String.format("Failed to add members to the wiki [%s]", request.getWikiId()), e);
+                String.format("Failed to add members to the wiki [%s].", request.getWikiId()), e);
         }
     }
 

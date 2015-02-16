@@ -33,6 +33,8 @@
   <properties>
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>Wiki Flavor Module</xwiki.extension.name>
+    <!-- Test coverage -->
+    <xwiki.jacoco.instructionRatio>0.52</xwiki.jacoco.instructionRatio>
   </properties>
   <dependencies>
     <dependency>
@@ -100,6 +102,18 @@
       <groupId>org.xwiki.platform</groupId>
       <artifactId>xwiki-platform-extension-distribution</artifactId>
       <version>${platform.version}</version>
+    </dependency>
+    <!-- Test dependencies -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.commons</groupId>
+      <artifactId>xwiki-commons-test-component</artifactId>
+      <version>${commons.version}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

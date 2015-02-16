@@ -26,6 +26,9 @@ import javax.inject.Provider;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.component.annotation.InstantiationStrategy;
 import org.xwiki.component.descriptor.ComponentInstantiationStrategy;
+import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
+import org.xwiki.contrib.wikiflavor.WikiCreationStep;
+import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 import org.xwiki.contrib.wikiflavor.WikiSource;
 import org.xwiki.model.reference.DocumentReference;
 import org.xwiki.wiki.descriptor.WikiDescriptor;
@@ -41,9 +44,6 @@ import com.xpn.xwiki.XWikiContext;
 import com.xpn.xwiki.XWikiException;
 import com.xpn.xwiki.doc.XWikiDocument;
 import com.xpn.xwiki.objects.BaseObject;
-import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
-import org.xwiki.contrib.wikiflavor.WikiCreationStep;
-import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 
 /**
  * Component that save the metadata of the wiki (pretty name, description, etc...) as well as the configuration (user
@@ -75,27 +75,27 @@ public class SaveWikiMetaDataStep implements WikiCreationStep
     public void execute(WikiCreationRequest request) throws WikiFlavorException
     {
         try {
-            String wikId = request.getWikiId();
+            String wikiId = request.getWikiId();
             // Meta data about the wiki
-            WikiDescriptor descriptor = wikiDescriptorManager.getById(wikId);
+            WikiDescriptor descriptor = wikiDescriptorManager.getById(wikiId);
             descriptor.setDescription(request.getDescription());
             descriptor.setPrettyName(request.getPrettyName());
             descriptor.setOwnerId(request.getOwnerId());
             wikiDescriptorManager.saveDescriptor(descriptor);
 
             // Meta data about the templates
-            wikiTemplateManager.setTemplate(wikId, request.isTemplate());
+            wikiTemplateManager.setTemplate(wikiId, request.isTemplate());
 
             // Meta data about the users
-            wikiUserManager.setUserScope(wikId, request.getUserScope());
-            wikiUserManager.setMembershipType(wikId, request.getMembershipType());
+            wikiUserManager.setUserScope(wikiId, request.getUserScope());
+            wikiUserManager.setMembershipType(wikiId, request.getMembershipType());
 
             // We also need to store what is the id of the main extension of that wiki
             maybeSaveMainExtensionId(request);
 
-        } catch (WikiManagerException|WikiTemplateManagerException|WikiUserManagerException|WikiFlavorException e) {
+        } catch (WikiManagerException|WikiTemplateManagerException|WikiUserManagerException e) {
             throw new WikiFlavorException(
-                String.format("Failed to set metadata to the wiki [%s]", request.getWikiId()), e);
+                String.format("Failed to set metadata to the wiki [%s].", request.getWikiId()), e);
         }
     }
 
@@ -123,7 +123,7 @@ public class SaveWikiMetaDataStep implements WikiCreationStep
                 xwiki.saveDocument(document, "Save the main extension id at the wiki creation.", xcontext);
             } catch (XWikiException e) {
                 throw new WikiFlavorException(
-                    String.format("Failed to save te main extension id in the wiki [%s].", wikiId), e);
+                    String.format("Failed to save the main extension id in the wiki [%s].", wikiId), e);
             }
         }
     }
