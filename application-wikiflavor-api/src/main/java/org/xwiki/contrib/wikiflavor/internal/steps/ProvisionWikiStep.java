@@ -24,20 +24,21 @@ import javax.inject.Named;
 import javax.inject.Provider;
 
 import org.xwiki.bridge.event.WikiCopiedEvent;
+import org.xwiki.bridge.event.WikiProvisionedEvent;
 import org.xwiki.bridge.event.WikiProvisioningEvent;
 import org.xwiki.bridge.event.WikiProvisioningFailedEvent;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.component.annotation.InstantiationStrategy;
 import org.xwiki.component.descriptor.ComponentInstantiationStrategy;
+import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
 import org.xwiki.contrib.wikiflavor.WikiCreationStep;
+import org.xwiki.contrib.wikiflavor.WikiFlavorException;
+import org.xwiki.contrib.wikiflavor.internal.ExtensionInstaller;
 import org.xwiki.observation.ObservationManager;
 import org.xwiki.wiki.internal.manager.WikiCopier;
 import org.xwiki.wiki.manager.WikiManagerException;
 
 import com.xpn.xwiki.XWikiContext;
-import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
-import org.xwiki.contrib.wikiflavor.WikiFlavorException;
-import org.xwiki.contrib.wikiflavor.internal.ExtensionInstaller;
 
 /**
  * Step that provision a new empty wiki with a template or an extension.
@@ -90,7 +91,7 @@ public class ProvisionWikiStep implements WikiCreationStep
         } catch (WikiManagerException|WikiFlavorException e) {
             observationManager.notify(new WikiProvisioningFailedEvent(request.getWikiId()), request.getWikiId(),
                 xcontextProvider.get());
-            throw new WikiFlavorException(String.format("Failed to provision the wiki [%s]", request.getWikiId()), e);
+            throw new WikiFlavorException(String.format("Failed to provision the wiki [%s].", request.getWikiId()), e);
         }
     }
 
@@ -102,7 +103,7 @@ public class ProvisionWikiStep implements WikiCreationStep
 
     private void sendWikiProvisionedEvent(WikiCreationRequest request)
     {
-        observationManager.notify(new WikiProvisioningEvent(request.getWikiId()), request.getWikiId(),
+        observationManager.notify(new WikiProvisionedEvent(request.getWikiId()), request.getWikiId(),
             xcontextProvider.get());
     }
 
