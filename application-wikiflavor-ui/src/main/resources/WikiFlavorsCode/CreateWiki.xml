@@ -579,8 +579,9 @@
         &lt;/div&gt;
       &lt;/div&gt;
       #end
-      #set($wikiDescriptor = $services.wiki.getById($request.wikiname))
-      #set($wikiURL = $xwiki.getURL($wikiDescriptor.mainPageReference))
+      ## The descriptor might not exists yet, so we cannot compute a link to the wiki we are creating.
+      ## Instead, we create a link to the "finalize" action, that performs a redirect when the wiki is created.
+      #set($wikiURL = $escapetool.xml($doc.getURL('view', "step=finalize&amp;wikiId=${request.wikiname}")))
       &lt;p class="successmessage box #if($hasError || $status.state == 'RUNNING')hidden#end" id="successMessage"&gt;
         $services.localization.render('xcs.wikiflavor.create.wizard.step.creation.complete', ["&lt;a href='$wikiURL'&gt;$!escapetool.xml($request.wikiname)&lt;/a&gt;"])
       &lt;/p&gt;
