@@ -100,7 +100,7 @@ public class WikiFlavorScriptServices implements ScriptService
             // Verify that if an extension id is provided, this extension is one of the authorized flavors.
             if (request.getExtensionId() != null) {
                 if (!isAuthorizedFlavor(request.getExtensionId())) {
-                    throw new WikiFlavorException(String.format("The flavor [%s] is not authorized", 
+                    throw new WikiFlavorException(String.format("The flavor [%s] is not authorized.",
                             request.getExtensionId()));
                 }
             }

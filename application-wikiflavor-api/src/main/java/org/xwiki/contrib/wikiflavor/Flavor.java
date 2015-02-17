@@ -33,9 +33,7 @@ public class Flavor
     private String extensionId;
 
     private String extensionVersion;
-
-    private String name;
-
+    
     private String nameTranslationKey;
 
     private String descriptionTranslationKey;
@@ -49,7 +47,7 @@ public class Flavor
      * @param extensionVersion version of the main extension
      * @param nameTranslationKey translation key for the name of the flavor
      * @param descriptionTranslationKey translation key for the description of the flavor
-     * @param icon the icon to use top represent the flavor
+     * @param icon the icon to use to represent the flavor
      */
     public Flavor(String extensionId, String extensionVersion, String nameTranslationKey,
         String descriptionTranslationKey, String icon)
@@ -93,13 +91,11 @@ public class Flavor
         return descriptionTranslationKey;
     }
 
+    /**
+     * @return the icon to use to represent the flavor
+     */
     public String getIcon()
     {
         return icon;
-    }
-
-    public void setIcon(String icon)
-    {
-        this.icon = icon;
     }
 }

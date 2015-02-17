@@ -19,6 +19,7 @@
  */
 package org.xwiki.contrib.wikiflavor;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.xwiki.stability.Unstable;
 
 /**
@@ -51,5 +52,16 @@ public class WikiFlavorException extends Exception
     public WikiFlavorException(String message, Throwable cause)
     {
         super(message, cause);
+    }
+    
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o instanceof WikiFlavorException) {
+            WikiFlavorException other = (WikiFlavorException) o;
+            return new EqualsBuilder().append(getMessage(), other.getMessage()).append(getCause(), other.getCause())
+                    .isEquals();
+        }
+        return false;
     }
 }

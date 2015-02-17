@@ -78,7 +78,7 @@ public class WikiFlavorJob extends AbstractJob<WikiCreationRequest, DefaultJobSt
             this.notifyPopLevelProgress();
         } catch (WikiFlavorException |ComponentLookupException e) {
             throw new WikiFlavorException(
-                String.format("Failed to execute creation steps on the wiki [%s]", request.getWikiId()), e);
+                String.format("Failed to execute creation steps on the wiki [%s].", request.getWikiId()), e);
         }
     }
 

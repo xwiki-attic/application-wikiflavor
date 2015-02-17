@@ -71,7 +71,7 @@ public class ExtensionInstaller
             job.initialize(installRequest);
             job.run();
         } catch (ComponentLookupException  e) {
-            throw new WikiFlavorException(String.format("Failed to install the flavor [%s] on the wiki [%].",
+            throw new WikiFlavorException(String.format("Failed to install the flavor [%s] on the wiki [%s].",
                 extensionId.toString(), wikiId), e);
         }
     }

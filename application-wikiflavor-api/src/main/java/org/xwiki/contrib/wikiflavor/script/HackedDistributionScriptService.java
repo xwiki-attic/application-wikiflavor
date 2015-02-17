@@ -29,7 +29,6 @@ import org.xwiki.extension.ExtensionId;
 import org.xwiki.extension.distribution.internal.DistributionScriptService;
 import org.xwiki.model.reference.DocumentReference;
 import org.xwiki.text.StringUtils;
-import org.xwiki.wiki.descriptor.WikiDescriptorManager;
 
 import com.xpn.xwiki.XWikiContext;
 
@@ -48,18 +47,6 @@ public class HackedDistributionScriptService extends DistributionScriptService
 
     @Inject
     private DocumentAccessBridge documentAccessBridge;
-
-    @Inject
-    private WikiDescriptorManager wikiDescriptorManager;
-
-    /**
-     * @return the recommended user interface for {@link #getDistributionExtension()}
-     */
-    @Override
-    public ExtensionId getUIExtensionId()
-    {
-        return getUIExtensionId(wikiDescriptorManager.getCurrentWikiId());
-    }
 
     @Override
     public ExtensionId getUIExtensionId(String wiki)

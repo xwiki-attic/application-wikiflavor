@@ -20,13 +20,16 @@
 package org.xwiki.contrib.wikiflavor.internal.steps;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import org.xwiki.wiki.user.WikiUserManager;
-import org.xwiki.wiki.user.WikiUserManagerException;
-
+import org.xwiki.component.annotation.Component;
+import org.xwiki.component.annotation.InstantiationStrategy;
+import org.xwiki.component.descriptor.ComponentInstantiationStrategy;
 import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
 import org.xwiki.contrib.wikiflavor.WikiCreationStep;
 import org.xwiki.contrib.wikiflavor.WikiFlavorException;
+import org.xwiki.wiki.user.WikiUserManager;
+import org.xwiki.wiki.user.WikiUserManagerException;
 
 /**
  * Steps that add members to the wiki.
@@ -34,6 +37,9 @@ import org.xwiki.contrib.wikiflavor.WikiFlavorException;
  * @version $Id: $
  * @since 1.0
  */
+@Component
+@InstantiationStrategy(ComponentInstantiationStrategy.PER_LOOKUP)
+@Named("adduser")
 public class AddUsersStep implements WikiCreationStep
 {
     @Inject

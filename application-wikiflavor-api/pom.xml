@@ -34,7 +34,7 @@
     <!-- Name to display by the Extension Manager -->
     <xwiki.extension.name>Wiki Flavor Module</xwiki.extension.name>
     <!-- Test coverage -->
-    <xwiki.jacoco.instructionRatio>0.52</xwiki.jacoco.instructionRatio>
+    <xwiki.jacoco.instructionRatio>0.99</xwiki.jacoco.instructionRatio>
   </properties>
   <dependencies>
     <dependency>
