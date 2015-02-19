@@ -475,7 +475,14 @@
   #else
     #set($discard = $wikiCreationRequest.setTemplate(false))
   #end
-  #set($discard = $wikiCreationRequest.setOwnerId($request.ownerId))
+  #set($ownerId = $request.ownerId)
+  #if("$!ownerId" == '')
+    ## If the ownerId is null, then set the current user
+    #set($ownerId = $services.model.serialize($xcontext.userReference, 'default'))
+  #else 
+    #set($ownerId = $services.model.serialize($services.model.resolveDocument($ownerId), 'default'))
+  #end
+  #set($discard = $wikiCreationRequest.setOwnerId($ownerId))
   #set($discard = $wikiCreationRequest.setUserScope($request.userScope))
   #set($discard = $wikiCreationRequest.setMembershipType($request.membershipType))
   #set($discard = $wikiCreationRequest.setFailOnExist(true))
@@ -512,10 +519,7 @@
       #set ($globalMembers = [])
       ## Enforce global users
       #foreach ($member in $members)
-        #if (!$member.startsWith("${services.wiki.mainWikiId}:"))
-          #set ($member = "${services.wiki.mainWikiId}:${member}")
-        #end
-        #set ($discard = $globalMembers.add("${member}"))
+        #set($discard = $globalMembers.add($services.model.serialize($services.model.resolveDocument($member), 'default')))
       #end
       ## Add the members
       #set ($discard = $wikiCreationRequest.setMembers($globalMembers))
