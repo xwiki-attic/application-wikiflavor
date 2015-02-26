@@ -44,21 +44,34 @@
   #set($discard = $response.setContentType('application/json'))
   #set($wikiId = $request.wikiId)
   #set($status = $services.wikiflavor.getJobStatus($wikiId))
-  #set($errors = $status.log.getLogs('ERROR'))
   #set($errorMessage = "")
-  #if($errors.size() &gt; 0)
-    #set($errorMessage = $errors[0].getFormattedMessage())
+  ## State
+  #set ($state = $status.state)
+  ## If a deleted wiki had the same name, the job status may still be there (with the 'FINISHED' status)
+  ## So we have to check if the wiki really exists
+  #if ($state == 'FINISHED' &amp;&amp; !$services.wiki.exists($wikiId))
+    ## If not, consider that the new job has not been launched yet
+    #set($state = 'NONE')
+    #set($logs = "")
+    #set($progress = 0)
+  #else
+    ## Log
+    #template('logging_macros.vm')
+    #template('extension.vm')
+    ## Hack to be able to use macros from extension.vm that are supposed to be used inside Extension Manager
+    #set($olddoc = $doc)
+    #set($doc = $xwiki.getDocument('XWiki.AddExtensions'))
+    #set($loading = $state != 'FINISHED')
+    #set($logs = "#printLogs($status.log, $loading)")
+    #set($doc = $olddoc)
+    #set($progress = $status.progress.offset)
+    ## Errors
+    #set($errors = $status.log.getLogs('ERROR'))
+    #if($errors.size() &gt; 0)
+      #set($errorMessage = $errors[0].getFormattedMessage())
+    #end
   #end
-  ## Log
-  #template('logging_macros.vm')
-  #template('extension.vm')
-  ## Hack to be able to use macros from extension.vm that are supposed to be used inside Extension Manager
-  #set($olddoc = $doc)
-  #set($doc = $xwiki.getDocument('XWiki.AddExtensions'))
-  #set($loading = $status.state != 'FINISHED')
-  #set($logs = "#printLogs($status.log, $loading)")
-  #set($doc = $olddoc)
-  #set($map = {'wikiId':$wikiId, 'progress':$status.progress.offset, 'status':$status.state, 'error':$errorMessage, 'logs':$logs})
+  #set($map = {'wikiId':$wikiId, 'progress':$progress, 'status':$state, 'error':$errorMessage, 'logs':$logs})
   $jsontool.serialize($map)
 #end
 {{/velocity}}</content>

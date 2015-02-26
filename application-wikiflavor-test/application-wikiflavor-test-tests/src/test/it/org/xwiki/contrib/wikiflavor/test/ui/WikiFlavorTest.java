@@ -126,17 +126,29 @@ public class WikiFlavorTest extends AbstractTest
         editPage.clickSaveAndView();
         
         // Let's go to create a new subwiki
+        createWikiFromTemplate();
+        // Doing it twice to check if we can create a wiki with the name of a deleted one
+        createWikiFromTemplate();
+        
         wikiIndexPage = WikiIndexPage.gotoPage();
+        wikiHomePage = wikiIndexPage.getWikiLink("My subwiki").click();
+        wikiHomePage.deleteWiki().confirm();
+        WikiFlavorsPage.gotoPage().getFlavorPage(FLAVOR_NAME).delete().clickYes();
+    }
+    
+    private void createWikiFromTemplate()
+    {
+        WikiIndexPage wikiIndexPage = WikiIndexPage.gotoPage();
         wikiIndexPage.createWiki();
-        createFlavoredWikiPage = new CreateFlavoredWikiPage();
+        CreateFlavoredWikiPage createFlavoredWikiPage = new CreateFlavoredWikiPage();
         createFlavoredWikiPage.setPrettyName("My other subwiki");
 
         // Get the list of flavors
-        flavors = createFlavoredWikiPage.getFlavors();
+        List<Flavor> flavors = createFlavoredWikiPage.getFlavors();
         assertEquals(1, flavors.size());
 
         // Get the list of templates
-        templates = createFlavoredWikiPage.getTemplates();
+        List<Template> templates = createFlavoredWikiPage.getTemplates();
         assertEquals(1, templates.size());
 
         // Verify that the template is the one we just have created
@@ -149,9 +161,9 @@ public class WikiFlavorTest extends AbstractTest
         createFlavoredWikiPage.setFlavorOrExtension("My subwiki (mysubwiki)");
 
         // Step 2
-        createWikiPageStepUser = createFlavoredWikiPage.goUserStep();
+        CreateWikiPageStepUser createWikiPageStepUser = createFlavoredWikiPage.goUserStep();
         createWikiPageStepUser.createWithTemplate();
-        wikiCreationProvisioningPage = new WikiCreationProvisioningPage();
+        WikiCreationProvisioningPage wikiCreationProvisioningPage = new WikiCreationProvisioningPage();
 
         // Provisioning
         assertEquals("Wiki creation", wikiCreationProvisioningPage.getStepTitle());
@@ -159,17 +171,13 @@ public class WikiFlavorTest extends AbstractTest
         // Finalization
         wikiCreationProvisioningPage.waitForFinalizeButton(30);
         assertFalse(wikiCreationProvisioningPage.hasLogError());
-        wikiHomePage = wikiCreationProvisioningPage.finalizeCreation();
-        
+        WikiHomePage wikiHomePage = wikiCreationProvisioningPage.finalizeCreation();
+
         // Go to the subwiki and check that it has correctly be created with the template
         assertEquals("My Template", wikiHomePage.getContent());
-        
+
         // Cleaning
         wikiHomePage.deleteWiki().confirm();
-        wikiIndexPage = WikiIndexPage.gotoPage();
-        wikiHomePage = wikiIndexPage.getWikiLink("My subwiki").click();
-        wikiHomePage.deleteWiki().confirm();
-        WikiFlavorsPage.gotoPage().getFlavorPage(FLAVOR_NAME).delete().clickYes();
     }
     
 }

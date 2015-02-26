@@ -40,6 +40,7 @@
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>application-wikiflavor-api</artifactId>
       <version>${project.version}</version>
+      <scope>runtime</scope>
     </dependency>
     <!-- We rewrite one page of the Wiki Manager Application -->
     <dependency>
@@ -47,6 +48,7 @@
       <artifactId>xwiki-platform-wiki-ui-mainwiki</artifactId>
       <version>${platform.version}</version>
       <type>xar</type>
+      <scope>runtime</scope>
     </dependency>
     <!-- We use the icon picker -->
     <dependency>
@@ -61,6 +63,7 @@
       <artifactId>xwiki-platform-appwithinminutes-ui</artifactId>
       <version>${platform.version}</version>
       <type>xar</type>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
   <build>

@@ -441,6 +441,14 @@
 ## The final step that eventually create the wiki
 ##################################
 #macro(createStep)
+  ## Job Status
+  #set ($state = $services.wikiflavor.getJobStatus($request.wikiname).state)
+  ## If a deleted wiki had the same name, the job status may still be there (with the 'FINISHED' status)
+  ## So we have to check if the wiki really exists
+  #if ($state == 'FINISHED' &amp;&amp; !$services.wiki.exists($request.wikiname))
+    ## If not, consider that the new job has not been launched yet
+    #set($state = 'NONE')
+  #end
   ## CSRF checkFailed to execute the [velocity] macro. Click on this m
   #if (!$services.csrf.isTokenValid($request.form_token))
 
@@ -449,7 +457,7 @@
     {{/warning}}
     
     #stepMembers()
-  #elseif("$!services.wikiflavor.getJobStatus($request.wikiname)" != '')
+  #elseif("$!state" != '' &amp;&amp; $state != 'NONE')
     #creation()
   #else
     #createWiki()
@@ -479,7 +487,7 @@
   #if("$!ownerId" == '')
     ## If the ownerId is null, then set the current user
     #set($ownerId = $services.model.serialize($xcontext.userReference, 'default'))
-  #else 
+  #else
     #set($ownerId = $services.model.serialize($services.model.resolveDocument($ownerId), 'default'))
   #end
   #set($discard = $wikiCreationRequest.setOwnerId($ownerId))
@@ -560,8 +568,17 @@
   #set ($discard = $xwiki.ssfx.use('uicomponents/logging/logging.css', true))
   #set ($discard = $xwiki.jsfx.use('uicomponents/logging/logging.js', true))
   #set ($status = $services.wikiflavor.getJobStatus($request.wikiname))
-  #set ($errors = $status.log.getLogs('ERROR'))
-  #set ($hasError = ($errors.size() &gt; 0))
+  #set($state = $status.state)
+  ## If a deleted wiki had the same name, the job status may still be there
+  ## So we have to check if the wiki really exists
+  #if ($state == 'FINISHED' &amp;&amp; !$services.wiki.exists($request.wikiname))
+    ## If not, consider that the new job has not been launched yet
+    #set($state = 'NONE')
+    #set($hasError = false)
+  #else
+    #set ($errors = $status.log.getLogs('ERROR'))
+    #set ($hasError = ($errors.size() &gt; 0))
+  #end
   
   {{html}}
     &lt;form class="xform" method="post" action="$doc.getURL()"&gt;
@@ -569,7 +586,7 @@
     &lt;input type="hidden" name="csrf" id="csrf" value="$!escapetool.xml($services.csrf.getToken())" /&gt;
     #wizardHeader($services.localization.render('xcs.wikiflavor.create.wizard.step.creation'))
     &lt;div class="wizard-body"&gt;
-      #if ($status.state == 'RUNNING')
+      #if ($state != 'FINISHED')
       &lt;div class="ui-progress" id="ui-progress"&gt;
         $services.localization.render('xcs.wikiflavor.create.wizard.step.creation.wait')
         &lt;div class="ui-progress-background"&gt;
@@ -586,10 +603,10 @@
       ## The descriptor might not exists yet, so we cannot compute a link to the wiki we are creating.
       ## Instead, we create a link to the "finalize" action, that performs a redirect when the wiki is created.
       #set($wikiURL = $escapetool.xml($doc.getURL('view', "step=finalize&amp;wikiId=${request.wikiname}")))
-      &lt;p class="successmessage box #if($hasError || $status.state == 'RUNNING')hidden#end" id="successMessage"&gt;
+      &lt;p class="successmessage box #if($hasError || $state != 'FINISHED')hidden#end" id="successMessage"&gt;
         $services.localization.render('xcs.wikiflavor.create.wizard.step.creation.complete', ["&lt;a href='$wikiURL'&gt;$!escapetool.xml($request.wikiname)&lt;/a&gt;"])
       &lt;/p&gt;
-      &lt;p class="errormessage box #if(!$hasError || $status.state == 'RUNNING')hidden#end" id="errorMessage"&gt;
+      &lt;p class="errormessage box #if(!$hasError || $state != 'FINISHED')hidden#end" id="errorMessage"&gt;
         $services.localization.render('xcs.wikiflavor.create.wizard.step.creation.error', ["&lt;a href='$wikiURL'&gt;$!escapetool.xml($request.wikiname)&lt;/a&gt;"])
       &lt;/p&gt;
     &lt;/div&gt;
@@ -599,12 +616,14 @@
     ## Hack to be able to use macros from extension.vm that are supposed to be used inside Extension Manager
     #set($olddoc = $doc)
     #set($doc = $xwiki.getDocument('XWiki.AddExtensions'))
-    #set($loading = $status.state != 'FINISHED')
+    #set($loading = $state != 'FINISHED')
     &lt;div id="creation-log"&gt;
-      #printLogs($status.log, $loading)
+      #if ($state != 'NONE')
+        #printLogs($status.log, $loading)
+      #end
     &lt;/div&gt;
     #set($doc = $olddoc)
-    #if($status.state == 'FINISHED')
+    #if($state == 'FINISHED')
       #set($finalizeHidden = $hasError)
       #set($cleanUpHidden = !$hasError)
     #else
@@ -1116,11 +1135,11 @@ XWiki.ProvisioningBar = Class.create({
       }.bind(this)
    });
   },
-  _refresh : function (status) {
-    if (status.status == 'FINISHED') {
+  _refresh : function (response) {
+    if (response.status == 'FINISHED') {
       $('ui-progress').addClassName('hidden');
       // We need to know if we have error
-      if (status.error.length &gt; 0) {
+      if (response.error.length &gt; 0) {
         $('errorMessage').removeClassName('hidden');
         $('cleanUp').removeClassName('hidden');
       } else {
@@ -1130,7 +1149,7 @@ XWiki.ProvisioningBar = Class.create({
       }
     }
     else {
-      var progress = status.progress;
+      var progress = response.progress;
       if (progress != 'null') {
         if (progress &lt; 0)
           progress = 0;
@@ -1142,15 +1161,13 @@ XWiki.ProvisioningBar = Class.create({
     }
     // Display logs
     var creationLogContainer = $('creation-log');
-    creationLogContainer.innerHTML = status.logs;
+    creationLogContainer.innerHTML = response.logs;
     creationLogContainer.firstDescendant().scrollTop=$$('.log-item-loading')[0].offsetTop;
   }
 });
 
 var init = function(event) {
-  if ($('wikiId')) {
-    new XWiki.ProvisioningBar();
-  }
+  new XWiki.ProvisioningBar();
   return true;
 };
 // When the document is loaded, trigger the Extension Manager form enhancements.
