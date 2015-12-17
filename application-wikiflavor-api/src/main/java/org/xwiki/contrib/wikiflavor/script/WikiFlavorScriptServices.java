@@ -30,20 +30,19 @@ import org.slf4j.Logger;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.context.Execution;
 import org.xwiki.contrib.wikiflavor.Flavor;
-import org.xwiki.contrib.wikiflavor.FlavoredWikiCreator;
-import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
 import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 import org.xwiki.contrib.wikiflavor.WikiFlavorManager;
 import org.xwiki.extension.ExtensionId;
 import org.xwiki.job.Job;
-import org.xwiki.job.event.status.JobStatus;
 import org.xwiki.model.reference.WikiReference;
+import org.xwiki.platform.wiki.creationjob.WikiCreationException;
+import org.xwiki.platform.wiki.creationjob.WikiCreator;
 import org.xwiki.script.service.ScriptService;
 import org.xwiki.security.authorization.AccessDeniedException;
 import org.xwiki.security.authorization.AuthorizationManager;
 import org.xwiki.security.authorization.Right;
 import org.xwiki.wiki.descriptor.WikiDescriptorManager;
-
+import org.xwiki.platform.wiki.creationjob.WikiCreationRequest;
 import com.xpn.xwiki.XWikiContext;
 
 /**
@@ -61,12 +60,12 @@ public class WikiFlavorScriptServices implements ScriptService
      * The key under which the last encountered error is stored in the current execution context.
      */
     private static final String ERROR_KEY = "scriptservice.wikiflavor.error";
-            
-    @Inject
-    private FlavoredWikiCreator flavoredWikiCreator;
 
     @Inject
     private WikiFlavorManager wikiFlavorManager;
+
+    @Inject
+    private WikiCreator wikiCreator;
 
     @Inject
     private Execution execution;
@@ -104,9 +103,9 @@ public class WikiFlavorScriptServices implements ScriptService
                             request.getExtensionId()));
                 }
             }
-            return flavoredWikiCreator.createWiki(request);
+            return wikiCreator.createWiki(request);
             
-        } catch (WikiFlavorException e) {
+        } catch (WikiFlavorException|WikiCreationException e) {
             setLastError(e);
             logger.warn("Failed to create a new wiki.", e);
         } catch (AccessDeniedException e) {
@@ -115,24 +114,7 @@ public class WikiFlavorScriptServices implements ScriptService
 
         return null;
     }
-
-    /**
-     * @param wikiId id of the wiki
-     * @return the job status corresponding to the creation of the wiki
-     */
-    public JobStatus getJobStatus(String wikiId)
-    {
-        return flavoredWikiCreator.getJobStatus(wikiId);
-    }
-
-    /**
-     * @return a new request for the creation of a new wiki
-     */
-    public WikiCreationRequest newWikiCreationRequest()
-    {
-        return new WikiCreationRequest();
-    }
-
+    
     /**
      * @return the list of available flavors
      */

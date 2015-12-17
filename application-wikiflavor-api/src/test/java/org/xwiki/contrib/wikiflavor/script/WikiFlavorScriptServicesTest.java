@@ -30,14 +30,13 @@ import org.junit.Test;
 import org.xwiki.context.Execution;
 import org.xwiki.context.ExecutionContext;
 import org.xwiki.contrib.wikiflavor.Flavor;
-import org.xwiki.contrib.wikiflavor.FlavoredWikiCreator;
-import org.xwiki.contrib.wikiflavor.WikiCreationRequest;
 import org.xwiki.contrib.wikiflavor.WikiFlavorException;
 import org.xwiki.contrib.wikiflavor.WikiFlavorManager;
 import org.xwiki.job.Job;
-import org.xwiki.job.event.status.JobStatus;
 import org.xwiki.model.reference.DocumentReference;
 import org.xwiki.model.reference.WikiReference;
+import org.xwiki.platform.wiki.creationjob.WikiCreationRequest;
+import org.xwiki.platform.wiki.creationjob.WikiCreator;
 import org.xwiki.security.authorization.AccessDeniedException;
 import org.xwiki.security.authorization.AuthorizationManager;
 import org.xwiki.security.authorization.Right;
@@ -66,7 +65,7 @@ public class WikiFlavorScriptServicesTest
     public MockitoComponentMockingRule<WikiFlavorScriptServices> mocker = 
             new MockitoComponentMockingRule<>(WikiFlavorScriptServices.class);
 
-    private FlavoredWikiCreator flavoredWikiCreator;
+    private WikiCreator wikiCreator;
 
     private WikiFlavorManager wikiFlavorManager;
 
@@ -85,7 +84,7 @@ public class WikiFlavorScriptServicesTest
     @Before
     public void setUp() throws Exception
     {
-        flavoredWikiCreator = mocker.getInstance(FlavoredWikiCreator.class);
+        wikiCreator = mocker.getInstance(WikiCreator.class);
         wikiFlavorManager = mocker.getInstance(WikiFlavorManager.class);
         execution = mocker.getInstance(Execution.class);
         authorizationManager = mocker.getInstance(AuthorizationManager.class);
@@ -125,7 +124,7 @@ public class WikiFlavorScriptServicesTest
         List<Flavor> flavorList = Arrays.asList(new Flavor("eId", "eVersion", "name", "description", "icon"));
         when(wikiFlavorManager.getFlavors()).thenReturn(flavorList);
         Job job = mock(Job.class);
-        when(flavoredWikiCreator.createWiki(any(WikiCreationRequest.class))).thenReturn(job);
+        when(wikiCreator.createWiki(any(WikiCreationRequest.class))).thenReturn(job);
         
         WikiCreationRequest wikiCreationRequest = new WikiCreationRequest();
         wikiCreationRequest.setExtensionId("eId", "version");
@@ -166,19 +165,5 @@ public class WikiFlavorScriptServicesTest
         Exception lastError = mocker.getComponentUnderTest().getLastError();
         assertNotNull(lastError);
         assertEquals(exception, lastError);
-    }
-
-    @Test
-    public void getJobStatus() throws Exception
-    {
-        JobStatus jobStatus = mock(JobStatus.class);
-        when(flavoredWikiCreator.getJobStatus("wikiId")).thenReturn(jobStatus);
-        assertEquals(jobStatus, mocker.getComponentUnderTest().getJobStatus("wikiId"));
-    }
-
-    @Test
-    public void newWikiCreationRequest() throws Exception
-    {
-        assertNotNull(mocker.getComponentUnderTest().newWikiCreationRequest());
     }
 }

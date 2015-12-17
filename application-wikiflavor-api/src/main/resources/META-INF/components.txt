@@ -1,10 +1,3 @@
-org.xwiki.contrib.wikiflavor.internal.steps.AddUsersStep
-org.xwiki.contrib.wikiflavor.internal.steps.CreateWikiStep
-org.xwiki.contrib.wikiflavor.internal.steps.ProvisionWikiStep
-org.xwiki.contrib.wikiflavor.internal.steps.SaveWikiMetaDataStep
-org.xwiki.contrib.wikiflavor.internal.DefaultFlavoredWikiCreator
 org.xwiki.contrib.wikiflavor.internal.DefaultWikiFlavorManager
-org.xwiki.contrib.wikiflavor.internal.ExtensionInstaller
-org.xwiki.contrib.wikiflavor.internal.WikiFlavorJob
 500:org.xwiki.contrib.wikiflavor.script.HackedDistributionScriptService
 org.xwiki.contrib.wikiflavor.script.WikiFlavorScriptServices
