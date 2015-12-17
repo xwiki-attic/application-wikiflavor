@@ -52,6 +52,8 @@
 ## STYLE
 #########################
 #set($docextras = {})
+#set($discard = $xwiki.ssx.use('WikiFlavorsCode.CreateWiki'))
+#set($discard = $xwiki.jsx.use('WikiFlavorsCode.CreateWiki'))
 #########################
 ## PLUGINS DEPENDENCIES
 #########################
