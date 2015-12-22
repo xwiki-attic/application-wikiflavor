@@ -58,7 +58,7 @@
     <!-- Test dependencies -->
     <dependency>
       <groupId>org.xwiki.platform</groupId>
-      <artifactId>xwiki-platform-test</artifactId>
+      <artifactId>xwiki-platform-test-ui</artifactId>
       <version>${platform.version}</version>
       <scope>test</scope>
     </dependency>
@@ -66,14 +66,6 @@
       <groupId>org.xwiki.contrib</groupId>
       <artifactId>application-wikiflavor-test-pageobjects</artifactId>
       <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <!-- We need the page objects from the flamingo theme editor to be sure it is correctly installed during the
-         tests -->
-    <dependency>
-      <groupId>org.xwiki.platform</groupId>
-      <artifactId>xwiki-platform-flamingo-test-pageobjects</artifactId>
-      <version>${platform.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -105,8 +97,7 @@
       <plugin>
         <groupId>org.xwiki.platform</groupId>
         <artifactId>xwiki-platform-tool-packager-plugin</artifactId>
-        <!-- We use the version 6.4.1 because we need http://jira.xwiki.org/browse/XWIKI-11777 -->
-        <version>6.4.1</version>
+        <version>${platform.version}</version>
         <executions>
           <execution>
             <phase>generate-test-resources</phase>
@@ -115,6 +106,37 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <!-- We disable the Distribution Wizard in the wiki during our tests -->
+      <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        <artifactId>replacer</artifactId>
+        <version>1.5.3</version>
+        <executions>
+          <execution>
+            <phase>generate-test-resources</phase>
+            <goals>
+              <goal>replace</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <basedir>${basedir}/target/xwiki/</basedir>
+          <filesToInclude>webapps/xwiki/WEB-INF/xwiki.properties</filesToInclude>
+          <regex>false</regex>
+          <commentsEnabled>false</commentsEnabled>
+          <skip>${skipTests}</skip>
+          <replacements>
+            <replacement>
+              <token># distribution.automaticStartOnMainWiki=true</token>
+              <value>distribution.automaticStartOnMainWiki=false</value>
+            </replacement>
+            <replacement>
+              <token># distribution.automaticStartOnWiki=true</token>
+              <value>distribution.automaticStartOnWiki=false</value>
+            </replacement>
+          </replacements>
+        </configuration>
       </plugin>
       <!-- Only execute AllTests and not individual tests. We do this to avoid having to start/stop XWiki and the
            browser several times -->
@@ -147,8 +169,7 @@
           <plugin>
             <groupId>org.xwiki.platform</groupId>
             <artifactId>xwiki-platform-tool-packager-plugin</artifactId>
-            <!-- We use the version 6.4.1 because we need http://jira.xwiki.org/browse/XWIKI-11777 -->
-            <version>6.4.1</version>
+            <version>${platform.version}</version>
             <dependencies>
               <dependency>
                 <groupId>com.cenqua.clover</groupId>

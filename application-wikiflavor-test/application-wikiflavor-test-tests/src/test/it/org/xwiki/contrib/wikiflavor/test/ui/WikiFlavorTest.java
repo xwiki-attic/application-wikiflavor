@@ -24,20 +24,22 @@ import java.util.List;
 import org.contrib.wikiflavor.tests.po.CreateFlavoredWikiPage;
 import org.contrib.wikiflavor.tests.po.Flavor;
 import org.contrib.wikiflavor.tests.po.Template;
-import org.contrib.wikiflavor.tests.po.WikiCreationProvisioningPage;
 import org.contrib.wikiflavor.tests.po.WikiFlavorEntryEditPage;
 import org.contrib.wikiflavor.tests.po.WikiFlavorsPage;
 import org.junit.Rule;
 import org.junit.Test;
 import org.xwiki.test.ui.AbstractTest;
 import org.xwiki.test.ui.SuperAdminAuthenticationRule;
+import org.xwiki.test.ui.po.CreatePagePage;
 import org.xwiki.test.ui.po.editor.WikiEditPage;
 import org.xwiki.wiki.test.po.CreateWikiPageStepUser;
+import org.xwiki.wiki.test.po.WikiCreationPage;
 import org.xwiki.wiki.test.po.WikiHomePage;
 import org.xwiki.wiki.test.po.WikiIndexPage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @version $Id: $
@@ -45,14 +47,13 @@ import static org.junit.Assert.assertFalse;
 public class WikiFlavorTest extends AbstractTest
 {
     @Rule
-    public SuperAdminAuthenticationRule superAdminAuthenticationRule =
-            new SuperAdminAuthenticationRule(getUtil(), getDriver());
+    public SuperAdminAuthenticationRule superAdminAuthenticationRule = new SuperAdminAuthenticationRule(getUtil());
     
-    private static final String FLAVOR_NAME = "Wiki with Flamingo Theme";
+    private static final String FLAVOR_NAME = "Wiki with Wiki Manager";
     
-    private static final String FLAVOR_EXTENSION_ID = "org.xwiki.platform:xwiki-platform-flamingo-theme";
+    private static final String FLAVOR_EXTENSION_ID = "org.xwiki.platform:xwiki-platform-wiki-ui-wiki";
     
-    private static final String FLAVOR_DESCRIPTION = "A wiki holding flamingo themes only. Quick to install.";
+    private static final String FLAVOR_DESCRIPTION = "A wiki holding wiki manager only.";
     
     private void setUpFlavor() throws Exception
     {
@@ -60,8 +61,8 @@ public class WikiFlavorTest extends AbstractTest
         WikiFlavorsPage wikiFlavorsPage = WikiFlavorsPage.gotoPage();
         WikiFlavorEntryEditPage wikiFlavorEntryEditPage = wikiFlavorsPage.addNewEntry(FLAVOR_NAME);
         wikiFlavorEntryEditPage.setName(FLAVOR_NAME);
-        // we install the Flamingo Theme application because it is quick to install and it is easy to verify that it has
-        // been correctly installed since this application provides some page objects.
+        // we install the Wiki Manager Application for subwiki because it is quick to install and it is easy to verify
+        // that it has been correctly installed since this application provides some page objects.
         wikiFlavorEntryEditPage.setExtensionId(FLAVOR_EXTENSION_ID);
         wikiFlavorEntryEditPage.setDescription(FLAVOR_DESCRIPTION);
         wikiFlavorEntryEditPage.setIcon("wiki");
@@ -89,38 +90,37 @@ public class WikiFlavorTest extends AbstractTest
         assertEquals(FLAVOR_NAME, basicWikiFlavor.getName());
         assertEquals(FLAVOR_DESCRIPTION, basicWikiFlavor.getDescription());
         assertEquals(FLAVOR_EXTENSION_ID, basicWikiFlavor.getExtensionId());
-        assertEquals(null, basicWikiFlavor.getExtensionVersion());
+        assertNotNull(basicWikiFlavor.getExtensionVersion());
         
         // Get the list of templates
+        createFlavoredWikiPage.selectTemplateTab();
         List<Template> templates = createFlavoredWikiPage.getTemplates();
         assertEquals(0, templates.size());
         
         // Set the type of wiki we want
-        createFlavoredWikiPage.setFlavorOrExtension(FLAVOR_NAME);
+        createFlavoredWikiPage.selectFlavorTab();
+        createFlavoredWikiPage.setFlavor(FLAVOR_NAME);
         // This wiki will be a template
+        createFlavoredWikiPage.selectTemplateTab();
         createFlavoredWikiPage.setIsTemplate(true);
         
         // Step 2
         CreateWikiPageStepUser createWikiPageStepUser = createFlavoredWikiPage.goUserStep();
-        createWikiPageStepUser.createWithTemplate();
-        WikiCreationProvisioningPage wikiCreationProvisioningPage = new WikiCreationProvisioningPage();
+        WikiCreationPage wikiCreationPage = createWikiPageStepUser.create();
 
         // Provisioning
-        assertEquals("Wiki creation", wikiCreationProvisioningPage.getStepTitle());
-        wikiCreationProvisioningPage.waitForFinalizeButton(30);
-        assertFalse(wikiCreationProvisioningPage.hasLogError());
+        assertEquals("Wiki creation", wikiCreationPage.getStepTitle());
+        wikiCreationPage.waitForFinalizeButton(30);
+        assertFalse(wikiCreationPage.hasLogError());
 
         // Finalization
-        WikiHomePage wikiHomePage = wikiCreationProvisioningPage.finalizeCreation();
+        WikiHomePage wikiHomePage = wikiCreationPage.finalizeCreation();
         
         // Go to the created subwiki
-        // Look if the flavor have been correctly installed
-        // ToDo: being able to navigate through a subwiki
-        // ThemeApplicationWebHomePage themeApplicationWebHomePage = ThemeApplicationWebHomePage.gotoPage();
-        // assertTrue(themeApplicationWebHomePage.exists());
         
         // Create a home page
-        wikiHomePage.createPage();
+        CreatePagePage createPagePage = wikiHomePage.createPage();
+        createPagePage.clickCreate();
         WikiEditPage editPage = new WikiEditPage();
         editPage.setContent("My Template");
         editPage.clickSaveAndView();
@@ -132,7 +132,8 @@ public class WikiFlavorTest extends AbstractTest
         
         wikiIndexPage = WikiIndexPage.gotoPage();
         wikiHomePage = wikiIndexPage.getWikiLink("My subwiki").click();
-        wikiHomePage.deleteWiki().confirm();
+        // if we can delete the subwiki, then the wiki manager application has been installed correctly :)
+        wikiHomePage.deleteWiki().confirm("mysubwiki");
         WikiFlavorsPage.gotoPage().getFlavorPage(FLAVOR_NAME).delete().clickYes();
     }
     
@@ -148,36 +149,36 @@ public class WikiFlavorTest extends AbstractTest
         assertEquals(1, flavors.size());
 
         // Get the list of templates
+        createFlavoredWikiPage.selectTemplateTab();
         List<Template> templates = createFlavoredWikiPage.getTemplates();
         assertEquals(1, templates.size());
 
         // Verify that the template is the one we just have created
         Template myTemplate = templates.get(0);
         assertEquals("My subwiki (mysubwiki)", myTemplate.getName());
-        assertEquals("My subwiki which gonna be a template.", myTemplate.getDescription());
         assertEquals("mysubwiki", myTemplate.getTemplateId());
 
         // Set the type of wiki we want
-        createFlavoredWikiPage.setFlavorOrExtension("My subwiki (mysubwiki)");
+        createFlavoredWikiPage.setTemplate("My subwiki (mysubwiki)");
 
         // Step 2
         CreateWikiPageStepUser createWikiPageStepUser = createFlavoredWikiPage.goUserStep();
-        createWikiPageStepUser.createWithTemplate();
-        WikiCreationProvisioningPage wikiCreationProvisioningPage = new WikiCreationProvisioningPage();
+        WikiCreationPage wikiCreationPage = createWikiPageStepUser.create();
 
         // Provisioning
-        assertEquals("Wiki creation", wikiCreationProvisioningPage.getStepTitle());
+        assertEquals("Wiki creation", wikiCreationPage.getStepTitle());
 
         // Finalization
-        wikiCreationProvisioningPage.waitForFinalizeButton(30);
-        assertFalse(wikiCreationProvisioningPage.hasLogError());
-        WikiHomePage wikiHomePage = wikiCreationProvisioningPage.finalizeCreation();
+        wikiCreationPage.waitForFinalizeButton(30);
+        assertFalse(wikiCreationPage.hasLogError());
+        WikiHomePage wikiHomePage = wikiCreationPage.finalizeCreation();
 
         // Go to the subwiki and check that it has correctly be created with the template
         assertEquals("My Template", wikiHomePage.getContent());
 
         // Cleaning
-        wikiHomePage.deleteWiki().confirm();
+        // If we can delete the subwiki, then the wiki manager application has been installed correctly :)
+        wikiHomePage.deleteWiki().confirm("myothersubwiki");
     }
     
 }
