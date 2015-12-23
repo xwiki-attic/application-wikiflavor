@@ -1,3 +1,4 @@
 org.xwiki.contrib.wikiflavor.internal.DefaultWikiFlavorManager
+org.xwiki.contrib.wikiflavor.internal.WikiFlavorMetadataStep
 500:org.xwiki.contrib.wikiflavor.script.HackedDistributionScriptService
 org.xwiki.contrib.wikiflavor.script.WikiFlavorScriptServices
