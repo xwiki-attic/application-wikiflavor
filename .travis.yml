@@ -1,12 +1,8 @@
 language: java
 sudo: false
-cache:
-    directories:
-        - $HOME/.m2
-jdk:
-    - oraclejdk8
-    - oraclejdk7
-    - openjdk7
+
+install:
+    - mvn clean install -U -Pquality --settings settings.xml
 
 after_success:
     - mvn clean test -Pquality jacoco:report coveralls:report
