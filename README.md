@@ -7,3 +7,20 @@ Designed to propose a list of flavors when you create a new wiki for XWiki >= 6.
 * Extension Page: http://extensions.xwiki.org/xwiki/bin/view/Extension/Wiki+Flavor+Application
 * JIRA (for issues): http://jira.xwiki.org/browse/FLAVOR
 * License: LGPL 2.1+
+
+How to build
+==
+```
+mvn clean install -Pquality --settings maven-settings.xml
+```
+
+How to run integration-tests
+==
+
+```
+mvn test -Pintegration-tests --settings maven-settings.xml
+```
+
+More infos on [xwiki.org](http://dev.xwiki.org/xwiki/bin/view/Community/Testing).
+
+
