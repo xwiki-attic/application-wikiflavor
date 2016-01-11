@@ -20,9 +20,9 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.2" reference="WikiFlavorsCode.CreateWiki" locale="">
+<xwikidoc version="1.2" reference="WikiFlavorsCode.CreateWiki_2016_01_11" locale="">
   <web>WikiFlavorsCode</web>
-  <name>CreateWiki</name>
+  <name>CreateWiki_2016_01_11</name>
   <language/>
   <defaultLanguage/>
   <translation>0</translation>
@@ -52,8 +52,18 @@
 ## STYLE
 #########################
 #set($docextras = {})
-#set($discard = $xwiki.ssx.use('WikiFlavorsCode.CreateWiki'))
-#set($discard = $xwiki.jsx.use('WikiFlavorsCode.CreateWiki'))
+## This page holds a date in its name so that browsers don't use a cached version of the JS/CSS resources when we do
+## changes. It means this date must be manually changed when changes are made.
+## This was important to do for this feature because cached code was completely different than current one and the 
+## application was broken in some conditions: see http://jira.xwiki.org/browse/FLAVOR-16
+## This solution is actually a workaround. The correct fix should be in XWiki Platform 
+## (http://jira.xwiki.org/browse/XWIKI-6073).
+## However, this change could not be done quickly in XWiki Platform, and the issue will still be present in older XWiki.
+## Given the severity of the bug, we are forced to use this workaround. Otherwise, every users will have to clear
+## their browser's cache after an upgrade, which is very technical for non-advanced users.
+## TODO: stop using this workaround when XWIKI-6073 is fixed.
+#set($discard = $xwiki.ssx.use('WikiFlavorsCode.CreateWiki_2016_01_11'))
+#set($discard = $xwiki.jsx.use('WikiFlavorsCode.CreateWiki_2016_01_11'))
 #########################
 ## PLUGINS DEPENDENCIES
 #########################
@@ -759,7 +769,7 @@ $xwiki.getURL('XWiki.XWikiPreferences', 'admin', "editor=globaladmin&amp;section
 {{/velocity}}
 </content>
   <object>
-    <name>WikiFlavorsCode.CreateWiki</name>
+    <name>WikiFlavorsCode.CreateWiki_2016_01_11</name>
     <number>0</number>
     <className>XWiki.JavaScriptExtension</className>
     <guid>185d534c-3466-4b01-a5bf-96c5e6c14c4f</guid>
@@ -1054,7 +1064,7 @@ $xwiki.getURL('XWiki.XWikiPreferences', 'admin', "editor=globaladmin&amp;section
     </property>
   </object>
   <object>
-    <name>WikiFlavorsCode.CreateWiki</name>
+    <name>WikiFlavorsCode.CreateWiki_2016_01_11</name>
     <number>1</number>
     <className>XWiki.JavaScriptExtension</className>
     <guid>17a9655f-6321-4b71-9416-e151ab6a867b</guid>
@@ -1212,7 +1222,7 @@ return XWiki;
     </property>
   </object>
   <object>
-    <name>WikiFlavorsCode.CreateWiki</name>
+    <name>WikiFlavorsCode.CreateWiki_2016_01_11</name>
     <number>2</number>
     <className>XWiki.JavaScriptExtension</className>
     <guid>8844308c-dfef-4ac1-a2ba-4b6612c4e645</guid>
@@ -1354,7 +1364,7 @@ require(['jquery'], function($) {
     </property>
   </object>
   <object>
-    <name>WikiFlavorsCode.CreateWiki</name>
+    <name>WikiFlavorsCode.CreateWiki_2016_01_11</name>
     <number>0</number>
     <className>XWiki.StyleSheetExtension</className>
     <guid>a3d02bfd-6c81-4a93-a5e8-1b67c8ec6fa6</guid>
@@ -1507,7 +1517,7 @@ require(['jquery'], function($) {
     </property>
   </object>
   <object>
-    <name>WikiFlavorsCode.CreateWiki</name>
+    <name>WikiFlavorsCode.CreateWiki_2016_01_11</name>
     <number>1</number>
     <className>XWiki.StyleSheetExtension</className>
     <guid>9a4280b9-3e46-4407-9950-a83c6676d782</guid>
