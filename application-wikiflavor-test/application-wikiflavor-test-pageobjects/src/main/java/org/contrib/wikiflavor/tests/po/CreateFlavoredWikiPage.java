@@ -20,7 +20,6 @@
 package org.contrib.wikiflavor.tests.po;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -36,8 +35,8 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
     @FindBy(xpath = "//input[@name = 'flavor']")
     private List<WebElement> flavors;
 
-    @FindBy(id = "template")
-    private WebElement template;
+    @FindBy(xpath = "//input[@name = 'template']")
+    private List<WebElement> templates;
 
     // Bug: descriptionField does not always work (maybe because there is a meta tag called "description".
     @FindBy(id = "description")
@@ -81,22 +80,15 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
     
     public List<Template> getTemplates()
     {
-        if (getDriver().hasElementWithoutWaiting(By.id("template"))) {
-            List<Template> results = new ArrayList<>();
-            for (WebElement el : template.findElements(By.tagName("option"))) {
-                String value = el.getAttribute("value");
-                if ("xwikinotemplate".equals(value)) {
-                    continue;
-                }
-                Template template = new Template();
-                template.setName(el.getText());
-                template.setTemplateId(value);
-                results.add(template);
-            }
-            return results;
-        } else {
-            return Collections.emptyList();
+        List<Template> results = new ArrayList<>();
+        for (WebElement el : templates) {
+            Template template = new Template();
+            template.setName(el.findElement(By.xpath("..//label")).getText());
+            template.setDescription(el.findElement(By.xpath("..//p[contains(@class, 'xHint')]")).getText());
+            template.setTemplateId(el.getAttribute("value"));
+            results.add(template);
         }
+        return results;
     }
     public void setFlavor(String flavorName)
     {
@@ -112,8 +104,14 @@ public class CreateFlavoredWikiPage extends CreateWikiPage
     
     public void setTemplate(String templateName)
     {
-        WebElement el = template.findElement(By.xpath("//option[text() = '" + templateName + "']"));
-        el.click();
+        for (WebElement el : templates) {
+            WebElement label = el.findElement(By.xpath("..//label"));
+            String name = label.getText();
+            if (templateName.equals(name)) {
+                label.click();
+                return;
+            }
+        }
     }
 
     @Override

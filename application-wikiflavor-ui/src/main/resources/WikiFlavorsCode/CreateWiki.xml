@@ -151,21 +151,16 @@
 ## Display the 'template' fields
 ##################################
 #macro(displayTemplateFields $templates)
-  #if ($templates.size() &gt; 0)
-    &lt;select name="template" id="template"&gt;
-      &lt;option value="xwikinotemplate"&gt;$services.localization.render('platform.wiki.create.wizard.template.noTemplate')&lt;/option&gt;
-      #foreach ($template in $templates)
-        #set ($name = $template.id)
-        #if ($stringtool.isNotBlank("$!template.prettyName"))
-          #set($name = "${template.prettyName} (${name})")
-        #end
-        #set($selected = '')
-        #if($request.template == $template.id)
-          #set($selected = 'selected="selected"')
-        #end
-        &lt;option value="${template.id}" $selected&gt;$name&lt;/option&gt;
+  #if (!$templates.isEmpty())
+    #set($options = [ {'name': 'Templates', 'options': []} ])
+    #foreach ($template in $templates)
+      #set ($name = $template.id)
+      #if ($stringtool.isNotBlank("$!template.prettyName"))
+        #set($name = "${template.prettyName} (${name})")
       #end
-    &lt;/select&gt;
+      #set ($discard = $options[0].options.add({ 'name': $name, 'value': $template.id, 'description': $template.description, 'icon': 'wiki' }))
+    #end
+    #xwikiSelect('template', $options, $request.template, false, 'xwiki-select-small')
   #end
   &lt;p class="xformInline"&gt;
     #set ($isTemplate = '')
@@ -1324,9 +1319,10 @@ require(['jquery'], function($) {
     /**
      * When a template is selected, unselect the flavor
      */
-    $('#'+'template').change(function(event) {
-      if (this.value != 'xwikinotemplate') {
-        $('.xwiki-flavor-picker-option-selected').removeClass('xwiki-flavor-picker-option-selected');
+    var templateSelector = $('#templates-tab &gt; .xwiki-select');
+    templateSelector.on('xwiki:select:updated', function() {
+      if (templateSelector.xwikiSelectWidget('getValue')) {
+        $('#flavors-tab .xwiki-flavor-picker-option-selected').removeClass('xwiki-flavor-picker-option-selected');
         $('input[name="flavor"]:radio:checked').prop('checked', false);
       }
     });
@@ -1335,7 +1331,9 @@ require(['jquery'], function($) {
      * When a flavor is selected, unselect the template
      */
     var onFlavorChanged = function(event) {
-      $('#'+'template').val('xwikinotemplate');
+      if ($('input[name="flavor"]:checked').length &gt; 0) {
+        $('#templates-tab .xwiki-select').xwikiSelectWidget('clearSelection');
+      }
     }
     $('input[name="flavor"]:radio').change(onFlavorChanged);
     $('.xwiki-flavor-picker-option').click(onFlavorChanged);
