@@ -2,7 +2,7 @@ Wiki Flavor Application
 =====
 Designed to propose a list of flavors when you create a new wiki for XWiki >= 6.4 and <= 7.0 (which has its own flavor mechanism).
 
-[![Build Status](https://travis-ci.org/xwiki-contrib/application-wikiflavor.svg)](https://travis-ci.org/xwiki-contrib/application-wikiflavor)
+[![Build Status](http://ci.xwiki.org/buildStatus/icon?job=Contrib - Wiki Flavor Application)](http://ci.xwiki.org/job/Contrib%20-%20Wiki%20Flavor%20Application/)
 
 * Extension Page: http://extensions.xwiki.org/xwiki/bin/view/Extension/Wiki+Flavor+Application
 * JIRA (for issues): http://jira.xwiki.org/browse/FLAVOR
