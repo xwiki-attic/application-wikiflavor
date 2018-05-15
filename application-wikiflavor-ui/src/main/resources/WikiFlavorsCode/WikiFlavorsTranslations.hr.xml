@@ -20,10 +20,10 @@
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
 -->
 
-<xwikidoc version="1.3" reference="WikiFlavorsCode.WikiFlavorsTranslations" locale="fr">
+<xwikidoc version="1.3" reference="WikiFlavorsCode.WikiFlavorsTranslations" locale="hr">
   <web>WikiFlavorsCode</web>
   <name>WikiFlavorsTranslations</name>
-  <language>fr</language>
+  <language>hr</language>
   <defaultLanguage>en</defaultLanguage>
   <translation>1</translation>
   <creator>xwiki:XWiki.Admin</creator>
@@ -39,32 +39,32 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language fr generated from http://www.l10n.xwiki.org
-WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Description (clé de traduction)
-WikiFlavorsCode.WikiFlavorsClass_extensionId=Extension ID
-WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Version de l'extension
-WikiFlavorsCode.WikiFlavorsClass_extensionVersion.hint=Laisser vider pour utiliser la version correspondant à l'instance de XWiki
-WikiFlavorsCode.WikiFlavorsClass_icon=Icône
-WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Nom (clé de traduction)
-wikiflavors.livetable._actions=Actions
-wikiflavors.livetable._actions.delete=Supprimer
-wikiflavors.livetable._actions.edit=Modifier
-wikiflavors.livetable._attachments=Pièces jointes
+  <content>## XWiki Translation for language hr generated from http://www.l10n.xwiki.org
+WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Ključ prijevoda opisa
+WikiFlavorsCode.WikiFlavorsClass_extensionId=Identifikator ekstenzije
+WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Verzija ekstenzije
+WikiFlavorsCode.WikiFlavorsClass_extensionVersion.hint=Ostavite praznim za korištenje verzije koja odgovara XWiki instanci.
+WikiFlavorsCode.WikiFlavorsClass_icon=Ikona
+WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Ključ prijevoda imena
+wikiflavors.livetable._actions=Akcije
+wikiflavors.livetable._actions.delete=Obriši
+wikiflavors.livetable._actions.edit=Uredi
+wikiflavors.livetable._attachments=Privitci
 wikiflavors.livetable._avatar=Avatar
-wikiflavors.livetable._images=Images
-wikiflavors.livetable.descriptionTranslationKey=Description (clé de traduction)
-wikiflavors.livetable.doc.author=Dernier auteur
-wikiflavors.livetable.doc.creationDate=Date de création
-wikiflavors.livetable.doc.creator=Créateur
-wikiflavors.livetable.doc.date=Date de mise à jour
-wikiflavors.livetable.doc.fullname=Nom complet de la page
-wikiflavors.livetable.doc.name=Nom de la page
-wikiflavors.livetable.doc.space=Espace
-wikiflavors.livetable.doc.title=Titre de la page
+wikiflavors.livetable._images=Slike
+wikiflavors.livetable.descriptionTranslationKey=Ključ prijevoda opisa
+wikiflavors.livetable.doc.author=Posljednji autor
+wikiflavors.livetable.doc.creationDate=Datum izrade
+wikiflavors.livetable.doc.creator=Tvorac
+wikiflavors.livetable.doc.date=Datum ažuriranja
+wikiflavors.livetable.doc.fullname=Puno ime stranice
+wikiflavors.livetable.doc.name=Ime stranice
+wikiflavors.livetable.doc.space=Prostor
+wikiflavors.livetable.doc.title=Ime stranice
 wikiflavors.livetable.emptyvalue=-
-wikiflavors.livetable.extensionId=Extension ID
-wikiflavors.livetable.extensionVersion=Version de l'extension
-wikiflavors.livetable.icon=Icône
-wikiflavors.livetable.nameTranslationKey=Nom (clé de traduction)
+wikiflavors.livetable.extensionId=Identifikator ekstenzije
+wikiflavors.livetable.extensionVersion=Verzija ekstenzije
+wikiflavors.livetable.icon=Ikona
+wikiflavors.livetable.nameTranslationKey=Ključ prijevoda imena
 </content>
 </xwikidoc>
