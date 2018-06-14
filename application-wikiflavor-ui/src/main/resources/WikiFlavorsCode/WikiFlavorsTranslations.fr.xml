@@ -39,32 +39,36 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language fr generated from http://www.l10n.xwiki.org
-WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Description (clé de traduction)
+  <content># Class fields
 WikiFlavorsCode.WikiFlavorsClass_extensionId=Extension ID
 WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Version de l'extension
 WikiFlavorsCode.WikiFlavorsClass_extensionVersion.hint=Laisser vider pour utiliser la version correspondant à l'instance de XWiki
-WikiFlavorsCode.WikiFlavorsClass_icon=Icône
 WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Nom (clé de traduction)
-wikiflavors.livetable._actions=Actions
-wikiflavors.livetable._actions.delete=Supprimer
-wikiflavors.livetable._actions.edit=Modifier
-wikiflavors.livetable._attachments=Pièces jointes
-wikiflavors.livetable._avatar=Avatar
-wikiflavors.livetable._images=Images
-wikiflavors.livetable.descriptionTranslationKey=Description (clé de traduction)
-wikiflavors.livetable.doc.author=Dernier auteur
-wikiflavors.livetable.doc.creationDate=Date de création
-wikiflavors.livetable.doc.creator=Créateur
-wikiflavors.livetable.doc.date=Date de mise à jour
-wikiflavors.livetable.doc.fullname=Nom complet de la page
+WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Description (clé de traduction)
+WikiFlavorsCode.WikiFlavorsClass_icon=Icône
+
+# Live table generic keys
+wikiflavors.livetable.doc.title=Titre de la page
 wikiflavors.livetable.doc.name=Nom de la page
 wikiflavors.livetable.doc.space=Espace
-wikiflavors.livetable.doc.title=Titre de la page
+wikiflavors.livetable.doc.fullname=Nom complet de la page
+wikiflavors.livetable.doc.author=Dernier auteur
+wikiflavors.livetable.doc.creator=Créateur
+wikiflavors.livetable.doc.date=Date de mise à jour
+wikiflavors.livetable.doc.creationDate=Date de création
+wikiflavors.livetable._avatar=Avatar
+wikiflavors.livetable._images=Images
+wikiflavors.livetable._attachments=Pièces jointes
+wikiflavors.livetable._actions=Actions
+wikiflavors.livetable._actions.edit=Modifier
+wikiflavors.livetable._actions.delete=Supprimer
 wikiflavors.livetable.emptyvalue=-
+
+# Live table specific keys
 wikiflavors.livetable.extensionId=Extension ID
 wikiflavors.livetable.extensionVersion=Version de l'extension
-wikiflavors.livetable.icon=Icône
 wikiflavors.livetable.nameTranslationKey=Nom (clé de traduction)
+wikiflavors.livetable.descriptionTranslationKey=Description (clé de traduction)
+wikiflavors.livetable.icon=Icône
 </content>
 </xwikidoc>
