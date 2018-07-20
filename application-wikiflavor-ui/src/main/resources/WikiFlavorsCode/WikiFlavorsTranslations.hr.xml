@@ -39,32 +39,36 @@
   <minorEdit>false</minorEdit>
   <syntaxId>xwiki/2.1</syntaxId>
   <hidden>true</hidden>
-  <content>## XWiki Translation for language hr generated from http://www.l10n.xwiki.org
-WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Ključ prijevoda opisa
+  <content># Class fields
 WikiFlavorsCode.WikiFlavorsClass_extensionId=Identifikator ekstenzije
 WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Verzija ekstenzije
 WikiFlavorsCode.WikiFlavorsClass_extensionVersion.hint=Ostavite praznim za korištenje verzije koja odgovara XWiki instanci.
-WikiFlavorsCode.WikiFlavorsClass_icon=Ikona
 WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Ključ prijevoda imena
-wikiflavors.livetable._actions=Akcije
-wikiflavors.livetable._actions.delete=Obriši
-wikiflavors.livetable._actions.edit=Uredi
-wikiflavors.livetable._attachments=Privitci
-wikiflavors.livetable._avatar=Avatar
-wikiflavors.livetable._images=Slike
-wikiflavors.livetable.descriptionTranslationKey=Ključ prijevoda opisa
-wikiflavors.livetable.doc.author=Posljednji autor
-wikiflavors.livetable.doc.creationDate=Datum izrade
-wikiflavors.livetable.doc.creator=Tvorac
-wikiflavors.livetable.doc.date=Datum ažuriranja
-wikiflavors.livetable.doc.fullname=Puno ime stranice
+WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Ključ prijevoda opisa
+WikiFlavorsCode.WikiFlavorsClass_icon=Ikona
+
+# Live table generic keys
+wikiflavors.livetable.doc.title=Ime stranice
 wikiflavors.livetable.doc.name=Ime stranice
 wikiflavors.livetable.doc.space=Prostor
-wikiflavors.livetable.doc.title=Ime stranice
+wikiflavors.livetable.doc.fullname=Puno ime stranice
+wikiflavors.livetable.doc.author=Posljednji autor
+wikiflavors.livetable.doc.creator=Tvorac
+wikiflavors.livetable.doc.date=Datum ažuriranja
+wikiflavors.livetable.doc.creationDate=Datum izrade
+wikiflavors.livetable._avatar=Avatar
+wikiflavors.livetable._images=Slike
+wikiflavors.livetable._attachments=Privitci
+wikiflavors.livetable._actions=Akcije
+wikiflavors.livetable._actions.edit=Uredi
+wikiflavors.livetable._actions.delete=Obriši
 wikiflavors.livetable.emptyvalue=-
+
+# Live table specific keys
 wikiflavors.livetable.extensionId=Identifikator ekstenzije
 wikiflavors.livetable.extensionVersion=Verzija ekstenzije
-wikiflavors.livetable.icon=Ikona
 wikiflavors.livetable.nameTranslationKey=Ključ prijevoda imena
+wikiflavors.livetable.descriptionTranslationKey=Ključ prijevoda opisa
+wikiflavors.livetable.icon=Ikona
 </content>
 </xwikidoc>
