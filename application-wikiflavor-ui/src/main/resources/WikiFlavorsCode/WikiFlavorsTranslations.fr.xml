@@ -69,6 +69,5 @@ wikiflavors.livetable.extensionId=Extension ID
 wikiflavors.livetable.extensionVersion=Version de l'extension
 wikiflavors.livetable.nameTranslationKey=Nom (clé de traduction)
 wikiflavors.livetable.descriptionTranslationKey=Description (clé de traduction)
-wikiflavors.livetable.icon=Icône
-</content>
+wikiflavors.livetable.icon=Icône</content>
 </xwikidoc>
