@@ -41,10 +41,10 @@
   <hidden>true</hidden>
   <content># Class fields
 WikiFlavorsCode.WikiFlavorsClass_extensionId=ID Расширения
-WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Версия Расширения
+WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Версия расширения
 WikiFlavorsCode.WikiFlavorsClass_extensionVersion.hint=Оставьте пустым, чтобы использовать версию, соответствующую экземпляру XWiki.
-WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Имя Ключа перевода
-WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Описание Ключа перевода
+WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Имя ключа перевода
+WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Описание ключа перевода
 WikiFlavorsCode.WikiFlavorsClass_icon=Иконка
 
 # Live table generic keys
@@ -52,23 +52,23 @@ wikiflavors.livetable.doc.title=Заголовок страницы
 wikiflavors.livetable.doc.name=Имя страницы
 wikiflavors.livetable.doc.space=Пространство
 wikiflavors.livetable.doc.fullname=Полное имя страницы
-wikiflavors.livetable.doc.author=Последний редактор
-wikiflavors.livetable.doc.creator=Автор
+wikiflavors.livetable.doc.author=Последний автор
+wikiflavors.livetable.doc.creator=Создатель
 wikiflavors.livetable.doc.date=Дата изменения
 wikiflavors.livetable.doc.creationDate=Дата создания
 wikiflavors.livetable._avatar=Аватар
 wikiflavors.livetable._images=Изображения
 wikiflavors.livetable._attachments=Вложения
 wikiflavors.livetable._actions=Действия
-wikiflavors.livetable._actions.edit=Редактировать
+wikiflavors.livetable._actions.edit=Правка
 wikiflavors.livetable._actions.delete=Удалить
-wikiflavors.livetable.emptyvalue=Пусто
+wikiflavors.livetable.emptyvalue=-
 
 # Live table specific keys
 wikiflavors.livetable.extensionId=ID Расширения
-wikiflavors.livetable.extensionVersion=Версия Расширения
-wikiflavors.livetable.nameTranslationKey=Имя Ключа перевода
-wikiflavors.livetable.descriptionTranslationKey=Описание Ключа перевода
+wikiflavors.livetable.extensionVersion=Версия расширения
+wikiflavors.livetable.nameTranslationKey=Имя ключа перевода
+wikiflavors.livetable.descriptionTranslationKey=Описание ключа перевода
 wikiflavors.livetable.icon=Иконка</content>
   
 </xwikidoc>
