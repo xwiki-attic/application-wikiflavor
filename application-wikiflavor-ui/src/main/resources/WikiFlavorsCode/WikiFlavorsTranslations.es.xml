@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.1">
+  <web>WikiFlavorsCode</web>
+  <name>WikiFlavorsTranslations</name>
+  <language>es</language>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>1</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <creationDate>1421938376000</creationDate>
+  <parent>WikiFlavorsClass</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <date>1421938376000</date>
+  <contentUpdateDate>1421938376000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content># Class fields
+WikiFlavorsCode.WikiFlavorsClass_extensionId=ID de extensión
+WikiFlavorsCode.WikiFlavorsClass_extensionVersion=Versión de la extensión
+WikiFlavorsCode.WikiFlavorsClass_extensionVersion.hint=Déjala vacía para utilizar la versión correspondiente de la instancia XWiki.
+WikiFlavorsCode.WikiFlavorsClass_nameTranslationKey=Clave de traducción de nombres
+WikiFlavorsCode.WikiFlavorsClass_descriptionTranslationKey=Clave de traducción de descripciones
+WikiFlavorsCode.WikiFlavorsClass_icon=Icono
+
+# Live table generic keys
+wikiflavors.livetable.doc.title=Título de página
+wikiflavors.livetable.doc.name=Nombre de página
+wikiflavors.livetable.doc.space=Página (espacio)
+wikiflavors.livetable.doc.fullname=Nombre completo de página
+wikiflavors.livetable.doc.author=Último autor
+wikiflavors.livetable.doc.creator=Creador
+wikiflavors.livetable.doc.date=Fecha de actualización
+wikiflavors.livetable.doc.creationDate=Fecha de creación
+wikiflavors.livetable._avatar=Avatar
+wikiflavors.livetable._images=Imágenes
+wikiflavors.livetable._attachments=Adjuntos
+wikiflavors.livetable._actions=Acciones
+wikiflavors.livetable._actions.edit=Editar
+wikiflavors.livetable._actions.delete=Borrar
+wikiflavors.livetable.emptyvalue=-
+
+# Live table specific keys
+wikiflavors.livetable.extensionId=Id de extensión
+wikiflavors.livetable.extensionVersion=Versión de la extensión
+wikiflavors.livetable.nameTranslationKey=Clave de traducción de nombres
+wikiflavors.livetable.descriptionTranslationKey=Clave de traducción de descripciones
+wikiflavors.livetable.icon=Icono</content>
+  
+</xwikidoc>
